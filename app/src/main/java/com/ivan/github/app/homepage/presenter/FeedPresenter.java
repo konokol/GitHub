@@ -53,7 +53,6 @@ public class FeedPresenter extends RxBasePresenter<FeedContract.View>
 
     @Override
     public void start() {
-
     }
 
     @Override
@@ -63,7 +62,10 @@ public class FeedPresenter extends RxBasePresenter<FeedContract.View>
 
     @Override
     public void listUserEvents(int page) {
-        getView().showLoading();
+        listUserEvents(page, true);
+    }
+
+    private void listUserEvents(int page, boolean showLoading) {
         Observable<List<Event>> observable;
         if (GitHub.appComponent().userCenter().isLogin()) {
             observable = mDataStore.listUserEvents(page);
@@ -71,7 +73,7 @@ public class FeedPresenter extends RxBasePresenter<FeedContract.View>
             observable = mDataStore.listPublicEvents(page);
         }
         Disposable disposable = observable
-                .compose(ProgressTransformer.apply(getView()))
+                .compose(showLoading ? ProgressTransformer.apply(getView()) : ProgressTransformer.empty())
                 .compose(TransformerHelper.schedulers())
                 .subscribe(this::onGetUserEvents, this::onGetUserEventError);
         addDisposable(disposable);
@@ -115,7 +117,7 @@ public class FeedPresenter extends RxBasePresenter<FeedContract.View>
     @Override
     public void refresh() {
         mData.clear();
-        listUserEvents(0);
+        listUserEvents(0, false);
     }
 
     @Override

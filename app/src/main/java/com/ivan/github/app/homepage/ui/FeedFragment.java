@@ -35,7 +35,6 @@ public class FeedFragment extends BaseMvpFragment<FeedContract.Presenter> implem
     FeedPresenter mPresenter;
 
     public FeedFragment() {
-        // empty public constructor
         inject();
     }
 
@@ -103,7 +102,6 @@ public class FeedFragment extends BaseMvpFragment<FeedContract.Presenter> implem
             mTvEmpty.setText(error);
             mTvEmpty.setVisibility(View.VISIBLE);
         }
-
     }
 
     @Override

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import android.os.Looper;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -148,13 +150,17 @@ public abstract class BaseMvpFragment<P extends IPresenter<?>> extends BaseFragm
 
     @Override
     public void showLoading() {
-        mLoadingDialog.show();
+        if (mLoadingDialog != null) {
+            mLoadingDialog.show();
+        }
     }
 
     @Override
     public void dismissLoading() {
         Logan.d(TAG, "dismissLoading");
-        mLoadingDialog.dismiss();
+        if (mLoadingDialog != null) {
+            mLoadingDialog.dismiss();
+        }
     }
 
     @Override

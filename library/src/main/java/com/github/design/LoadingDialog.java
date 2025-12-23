@@ -5,6 +5,9 @@ import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -24,6 +27,7 @@ public class LoadingDialog extends Dialog {
 
     private TextView mTvText;
     private LoadingView mLoadingView;
+    private Handler mHandler = new Handler(Looper.getMainLooper());
 
     public LoadingDialog(@NonNull Context context) {
         this(context, R.style.dialogStyle);
@@ -54,9 +58,25 @@ public class LoadingDialog extends Dialog {
     }
 
     @Override
+    public void show() {
+        if (Looper.myLooper() == mHandler.getLooper()) {
+            super.show();
+        } else {
+            mHandler.post(super::show);
+        }
+    }
+
+    @Override
     public void dismiss() {
         super.dismiss();
-        mLoadingView.stop();
+        if (mLoadingView == null) {
+            return;
+        }
+        if (Looper.myLooper() == mHandler.getLooper()) {
+            mLoadingView.stop();
+        } else {
+            mHandler.post(() -> mLoadingView.stop());
+        }
     }
 
     public void setText(CharSequence text) {

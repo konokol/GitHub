@@ -39,4 +39,10 @@ public class ProgressTransformer {
             }
         });
     }
+
+    public static <T> ObservableTransformer<T, T> empty() {
+        return upstream -> upstream.doOnNext(t -> {
+            Logan.d(TAG, "empty");
+        });
+    }
 }
