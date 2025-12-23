@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.ivan.github.GitHub;
 import com.ivan.github.R;
@@ -27,6 +28,7 @@ import com.ivan.github.app.login.LoginActivity;
 public class SettingsFragment extends BaseFragment implements View.OnClickListener {
 
     private Button mBtnLogout;
+    private TextView mTvSwitchAccount;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -54,16 +56,14 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
     private void initView(View rootView) {
         mBtnLogout = rootView.findViewById(R.id.btn_logout);
         mBtnLogout.setOnClickListener(this);
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
+        mTvSwitchAccount = rootView.findViewById(R.id.tv_switch_account);
+        if (GitHub.appComponent().userCenter().isLogin()) {
+            mBtnLogout.setVisibility(View.VISIBLE);
+            mTvSwitchAccount.setVisibility(View.VISIBLE);
+        } else {
+            mBtnLogout.setVisibility(View.GONE);
+            mTvSwitchAccount.setVisibility(View.GONE);
+        }
     }
 
     @Override

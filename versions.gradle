@@ -4,9 +4,9 @@ ext {
      * android config
      */
     config = [
-            compileSdkVersion: 33,
+            compileSdkVersion: 35,
             minSdkVersion    : 21,
-            targetSdkVersion : 33,
+            targetSdkVersion : 35,
     ]
 
     versions = [

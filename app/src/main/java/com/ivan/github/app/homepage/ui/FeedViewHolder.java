@@ -27,7 +27,7 @@ public abstract class FeedViewHolder extends RecyclerView.ViewHolder {
         return itemView.getContext();
     }
 
-    private FeedViewHolder(@NonNull View itemView) {
+    protected FeedViewHolder(@NonNull View itemView) {
         super(itemView);
         initView(itemView);
     }

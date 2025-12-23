@@ -103,7 +103,7 @@ public class ProfileView extends LinearLayout {
             mTVEmail.setVisibility(View.GONE);
             mTVLocation.setVisibility(View.GONE);
             mTVAnnouncement.setVisibility(View.VISIBLE);
-            mIVAvatar.setImageResource(R.drawable.ic_github);
+            mIVAvatar.setImageResource(com.github.design.R.drawable.ic_github);
             mProfileBackground.setBackgroundResource(R.drawable.side_nav_bar);
         } else {
             mTVLogin.setVisibility(View.VISIBLE);

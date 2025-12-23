@@ -6,10 +6,8 @@ import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import com.github.design.R;
 
-import androidx.core.app.ActivityCompat;
-
-import com.ivan.github.R;
 import com.ivan.github.app.AppSettings;
 import com.ivan.github.app.BaseActivity;
 
@@ -33,7 +31,7 @@ public class SplashActivity extends BaseActivity {
             lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
             getWindow().setAttributes(lp);
         }
-        setContentView(R.layout.activity_splash);
+        setContentView(com.ivan.github.R.layout.activity_splash);
         Handler handler = new Handler(getMainLooper());
         handler.postDelayed(this::navigation, 1000);
     }

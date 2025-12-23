@@ -5,7 +5,7 @@ apply from: '../graver.gradle'
 
 android {
     namespace 'com.ivan.github'
-    compileSdkVersion rootProject.ext.config.compileSdkVersion
+    compileSdk rootProject.ext.config.compileSdkVersion
     defaultConfig {
         applicationId "com.github.android.pro"
         minSdkVersion rootProject.ext.config.minSdkVersion
@@ -19,6 +19,12 @@ android {
         renderscriptSupportModeEnabled true
         multiDexEnabled true
         manifestPlaceholders = [APP_NAME: "Github"]
+    }
+
+    buildFeatures {
+        dataBinding true
+        buildConfig true
+        renderScript true
     }
 
     sourceSets {
@@ -74,6 +80,15 @@ android {
         }
     }
 
+}
+
+configurations.configureEach {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'org.jetbrains.kotlin') {
+            details.useVersion '1.8.10'
+        }
+    }
 }
 
 dependencies {
