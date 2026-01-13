@@ -2,6 +2,8 @@ package com.ivan.github.app.homepage.ui;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
+
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.github.design.widget.BaseRecyclerViewAdapter;
@@ -16,6 +18,8 @@ import com.ivan.github.app.homepage.model.entity.event.Event;
  */
 public class FeedListAdapter extends BaseRecyclerViewAdapter<FeedViewHolder, Event> {
 
+    private LayoutInflater layoutInflater;
+
     public FeedListAdapter(Context context) {
         super(context);
     }
@@ -23,7 +27,10 @@ public class FeedListAdapter extends BaseRecyclerViewAdapter<FeedViewHolder, Eve
     @NonNull
     @Override
     public FeedViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return FeedViewHolderFactory.create(getContext(), viewGroup, getData(i));
+        if (layoutInflater == null) {
+            layoutInflater = LayoutInflater.from(getContext());
+        }
+        return FeedViewHolderFactory.create(getContext(), layoutInflater, viewGroup, getData(i));
     }
 
     @Override

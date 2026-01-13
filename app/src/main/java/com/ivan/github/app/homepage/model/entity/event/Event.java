@@ -3,6 +3,7 @@ package com.ivan.github.app.homepage.model.entity.event;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.ivan.github.account.model.User;
+import com.ivan.github.common.util.GsonUtils;
 
 import java.util.Date;
 
@@ -25,6 +26,7 @@ public class Event {
     private Date createdAt;
     private Org org;
     private JsonObject payload;
+    private transient Object parsedPayload;
 
     public String getId() {
         return id;
@@ -64,6 +66,18 @@ public class Event {
 
     public void setPayload(JsonObject payload) {
         this.payload = payload;
+    }
+
+    public <T> T parsePayload(Class<T> clazz) {
+        if (payload == null) {
+            return null;
+        }
+        if (parsedPayload != null) {
+            return (T)parsedPayload;
+        } else {
+            parsedPayload = GsonUtils.from(payload, clazz);
+        }
+        return (T)parsedPayload;
     }
 
     public boolean isPublic() {

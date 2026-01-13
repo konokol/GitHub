@@ -43,7 +43,7 @@ public class PushEventPayload extends Payload {
     private int distinctSize;
     private String ref;
     private String head;
-    private String befor;
+    private String before;
     private List<Commit> commits;
 
     public String getPushId() {
@@ -86,12 +86,12 @@ public class PushEventPayload extends Payload {
         this.head = head;
     }
 
-    public String getBefor() {
-        return befor;
+    public String getBefore() {
+        return before;
     }
 
-    public void setBefor(String befor) {
-        this.befor = befor;
+    public void setBefore(String before) {
+        this.before = before;
     }
 
     public List<Commit> getCommits() {

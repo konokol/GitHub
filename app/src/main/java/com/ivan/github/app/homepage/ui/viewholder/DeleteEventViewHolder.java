@@ -1,6 +1,7 @@
 package com.ivan.github.app.homepage.ui.viewholder;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import com.ivan.github.app.homepage.model.entity.event.Repository;
 import com.ivan.github.app.homepage.ui.FeedViewHolder;
 import com.ivan.github.app.homepage.model.entity.event.Event;
 import com.ivan.github.app.homepage.model.entity.event.payload.DeleteEventPayload;
+import com.ivan.github.app.homepage.ui.Layout;
 import com.ivan.github.common.util.DateFormatUtils;
 import com.ivan.github.common.util.GsonUtils;
 
@@ -22,6 +24,7 @@ import com.ivan.github.common.util.GsonUtils;
  * @version v0.1
  * @since v1.0
  **/
+@Layout(layoutId = R.layout.feed_event_delete)
 public class DeleteEventViewHolder extends FeedViewHolder {
 
     private ImageView mIvAvatar;
@@ -31,12 +34,8 @@ public class DeleteEventViewHolder extends FeedViewHolder {
     private TextView mTvRef;
     private TextView mTvRepository;
 
-    public static DeleteEventViewHolder newInstance(Context context, ViewGroup parent, int id) {
-        return new DeleteEventViewHolder(context, parent, id);
-    }
-
-    public DeleteEventViewHolder(Context context, ViewGroup parent, int id) {
-        super(context, parent, id);
+    public DeleteEventViewHolder(Context context, LayoutInflater inflater, ViewGroup parent, int id) {
+        super(inflater, parent, id);
     }
 
     @Override

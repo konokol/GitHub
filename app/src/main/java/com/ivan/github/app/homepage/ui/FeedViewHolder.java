@@ -4,6 +4,8 @@ import android.content.Context;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewbinding.ViewBinding;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,17 +21,21 @@ import com.ivan.github.app.homepage.model.entity.event.Event;
  **/
 public abstract class FeedViewHolder extends RecyclerView.ViewHolder {
 
-    public FeedViewHolder(Context context, ViewGroup parent, @LayoutRes int id) {
-        this(LayoutInflater.from(context).inflate(id, parent, false));
+    public FeedViewHolder(LayoutInflater inflater, ViewGroup parent, @LayoutRes int id) {
+        this(inflater.inflate(id, parent, false));
     }
 
-    public Context getContext() {
-        return itemView.getContext();
+    public FeedViewHolder(ViewBinding viewBinding) {
+        this(viewBinding.getRoot());
     }
 
     protected FeedViewHolder(@NonNull View itemView) {
         super(itemView);
         initView(itemView);
+    }
+
+    public Context getContext() {
+        return itemView.getContext();
     }
 
     public abstract void initView(View itemView);

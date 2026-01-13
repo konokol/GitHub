@@ -15,7 +15,7 @@ import io.reactivex.rxjava3.core.Observable;
  **/
 public interface IFeedDataStore {
 
-    int PAGE_SIZE = 30;
+    int PAGE_SIZE = 20;
 
     Observable<List<Event>> listUserEvents(int page);
 

@@ -2,6 +2,7 @@ package com.ivan.github.app.homepage.ui.viewholder;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,7 +27,7 @@ import com.ivan.github.common.util.DateFormatUtils;
  * @since v1.0
  */
 @SuppressLint("NonConstantResourceId")
-@Layout(layoutId = R.layout.layout_feed_list_item_delete)
+@Layout(layoutId = R.layout.feed_event_default)
 public class DefaultViewHolder extends FeedViewHolder {
 
     private ImageView mIvAvatar;
@@ -36,12 +37,12 @@ public class DefaultViewHolder extends FeedViewHolder {
     private TextView mTvRef;
     private TextView mTvRepository;
 
-    public static DefaultViewHolder newInstance(Context context, ViewGroup parent, int id) {
-        return new DefaultViewHolder(context, parent, id);
+    public static DefaultViewHolder newInstance(LayoutInflater inflater, ViewGroup parent, int id) {
+        return new DefaultViewHolder(inflater, parent, id);
     }
 
-    DefaultViewHolder(Context context, ViewGroup parent, int id) {
-        super(context, parent, id);
+    DefaultViewHolder(LayoutInflater inflater, ViewGroup parent, int id) {
+        super(inflater, parent, id);
     }
 
     @Override

@@ -116,11 +116,7 @@
     <string name="notification_fragment">Notification</string>
     <string name="settings_fragment">Settings</string>
     <string name="at">at</string>
-    <string name="feed_action_default">performed a action</string>
-    <string name="feed_delete_branch">delete a branch</string>
-    <string name="feed_delete_tag">delete a tag</string>
-    <string name="feed_delete">delete</string>
-    <string name="feed_empty_text">No feeds</string>
+
     <string name="logout">Logout</string>
     <string name="general">General</string>
     <string name="notification">Notifications</string>
