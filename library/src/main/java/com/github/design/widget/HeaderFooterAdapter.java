@@ -158,6 +158,11 @@ public class HeaderFooterAdapter<VH extends RecyclerView.ViewHolder> extends Rec
 
         public HeaderFooterViewHolder(@NonNull FrameLayout itemView) {
             super(itemView);
+            ViewGroup.LayoutParams layoutParams = itemView.getLayoutParams();
+            if (layoutParams == null) {
+                layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                itemView.setLayoutParams(layoutParams);
+            }
             this.mContainer = itemView;
         }
     }

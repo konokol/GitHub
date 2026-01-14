@@ -78,6 +78,14 @@ public class FeedFragment extends BaseMvpFragment<FeedContract.Presenter> implem
     }
 
     @Override
+    public void initList(List<Event> list) {
+        showNormalView();
+        mRecyclerView.setRefreshing(false);
+        mAdapter.setData(list);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void updateList(List<Event> list) {
         showNormalView();
         int size = mAdapter.getItemCount();
@@ -87,14 +95,21 @@ public class FeedFragment extends BaseMvpFragment<FeedContract.Presenter> implem
     }
 
     @Override
+    protected void showNormalView() {
+        super.showNormalView();
+        mRecyclerView.setNormal();
+    }
+
+    @Override
     public void showEmptyView() {
+        mRecyclerView.setNormal();
         mTvEmpty.setText(R.string.feed_empty_text);
-        mTvEmpty.setVisibility(View.GONE);
+        mTvEmpty.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showErrorPage(int code, String error) {
-        Snackbar.make(mRecyclerView, error, Snackbar.LENGTH_LONG).show();
+        mRecyclerView.setNormal();
         showErrorView(getString(R.string.error) + "#" + code, error);
         if (mAdapter.getItemCount() > 0) {
             Snackbar.make(mRecyclerView, error, Snackbar.LENGTH_LONG).show();
@@ -107,6 +122,7 @@ public class FeedFragment extends BaseMvpFragment<FeedContract.Presenter> implem
     @Override
     public void showEnd() {
         mRecyclerView.setRefreshing(false);
+        mRecyclerView.setNoMore();
     }
 
     @Override

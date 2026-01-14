@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.github.design.widget.LoadingTextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tv_loading_text"
-    style="@style/LoadMoreBottomText"
-    android:layout_width="100dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:text="@string/loading_more" />
+    android:orientation="vertical">
+
+    <com.github.design.widget.LoadingTextView
+        android:id="@+id/tv_loading_text"
+        style="@style/LoadMoreBottomText"
+        android:layout_width="100dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/loading_more" />
+
+</LinearLayout>

@@ -22,6 +22,7 @@ import javax.inject.Inject;
 
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.functions.Consumer;
 
 /**
  * Event Presenter
@@ -75,24 +76,23 @@ public class FeedPresenter extends RxBasePresenter<FeedContract.View>
         Disposable disposable = observable
                 .compose(showLoading ? ProgressTransformer.apply(getView()) : ProgressTransformer.empty())
                 .compose(TransformerHelper.schedulers())
-                .subscribe(this::onGetUserEvents, this::onGetUserEventError);
+                .subscribe(events -> onGetUserEvents(events, page), this::onGetUserEventError);
         addDisposable(disposable);
     }
 
-    private void onGetUserEvents(List<Event> list) {
+    private void onGetUserEvents(List<Event> list, int page) {
         if (CollectionUtils.isEmpty(list)) {
-            if (mData.isEmpty()) {
+            if (page == 0) {
                 getView().showEmptyView();
             } else {
                 getView().showEnd();
             }
-        } else if (mData.isEmpty()) {
-            mData.addAll(list);
-            getView().updateList(list);
         } else {
-            Event e1 = CollectionUtils.getLast(mData);
-            Event e2 = CollectionUtils.getLast(list);
-            if (e1 == null || e2 == null || !TextUtils.equals(e1.getId(), e2.getId())) {
+            if (page == 0) {
+                mData.clear();
+                mData.addAll(list);
+                getView().initList(list);
+            } else {
                 mData.addAll(list);
                 getView().updateList(list);
             }
@@ -116,7 +116,6 @@ public class FeedPresenter extends RxBasePresenter<FeedContract.View>
 
     @Override
     public void refresh() {
-        mData.clear();
         listUserEvents(0, false);
     }
 

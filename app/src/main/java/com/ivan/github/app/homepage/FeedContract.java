@@ -20,6 +20,8 @@ public interface FeedContract {
 
     interface View extends IBaseStateView<Presenter> {
 
+        void initList(List<Event> list);
+
         void updateList(List<Event> list);
 
         void showEmptyView();

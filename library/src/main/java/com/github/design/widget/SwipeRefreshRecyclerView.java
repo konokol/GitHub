@@ -79,7 +79,7 @@ public class SwipeRefreshRecyclerView extends SwipeRefreshLayout {
             if (!mCanLoadMore) {
                 return;
             }
-            if (mLoadMoreStatus != STATUS_NO_MORE && mLoadMoreStatus != STATUS_LOADING) {
+            if (mLoadMoreStatus == STATUS_NO_MORE || mLoadMoreStatus == STATUS_LOADING) {
                 return;
             }
             if (dy >= 0) {
@@ -119,21 +119,22 @@ public class SwipeRefreshRecyclerView extends SwipeRefreshLayout {
 
     public void setLoadingMore() {
         this.mLoadMoreStatus = STATUS_LOADING;
-        LoadingTextView loadingTextView = (LoadingTextView) LayoutInflater.from(getContext())
+        View loadingView = LayoutInflater.from(getContext())
                 .inflate(R.layout.loading_footer_loading, this, false);
-        mAdapter.setFooter(loadingTextView);
+        LoadingTextView loadingTextView = loadingView.findViewById(R.id.tv_loading_text);
+        mAdapter.setFooter(loadingView);
         loadingTextView.startLoading();
     }
 
     public void setNoMore() {
         this.mLoadMoreStatus = STATUS_NO_MORE;
-        View view =  LayoutInflater.from(getContext()).inflate(R.layout.loading_footer_none, this, false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.loading_footer_none, this, false);
         mAdapter.setFooter(view);
     }
 
     public void setLoadMoreError() {
         this.mLoadMoreStatus = STATUS_ERROR;
-        View view =  LayoutInflater.from(getContext()).inflate(R.layout.loading_footer_error, this, false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.loading_footer_error, this, false);
         view.setOnClickListener(v -> triggerLoadMore());
         mAdapter.setFooter(view);
     }

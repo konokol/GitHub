@@ -1,6 +1,7 @@
 package com.github.design.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatTextView;
@@ -16,10 +17,11 @@ import java.text.MessageFormat;
  */
 public class LoadingTextView extends AppCompatTextView implements Runnable {
 
-    private final static int DELAY = 600;
+    private final static int DELAY = 200;
     private final String[] mDots = new String[]{".", "..", "..."};
     private int mLoopCount = 0;
     private boolean isLoading;
+    private CharSequence mText;
 
     public LoadingTextView(Context context) {
         this(context, null);
@@ -31,6 +33,12 @@ public class LoadingTextView extends AppCompatTextView implements Runnable {
 
     public LoadingTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        mText = getText();
     }
 
     public void startLoading() {
@@ -46,8 +54,9 @@ public class LoadingTextView extends AppCompatTextView implements Runnable {
     @Override
     public void run() {
         mLoopCount %= mDots.length;
-        this.setText(MessageFormat.format("{0}{1}", getText(), mDots[mLoopCount]));
+        this.setText(MessageFormat.format("{0}{1}", mText, mDots[mLoopCount]));
         if (isLoading) {
+            mLoopCount++;
             this.postDelayed(this, DELAY);
         }
     }
@@ -56,5 +65,6 @@ public class LoadingTextView extends AppCompatTextView implements Runnable {
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         isLoading = false;
+        stopLoading();
     }
 }

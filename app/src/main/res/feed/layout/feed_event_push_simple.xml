@@ -46,7 +46,7 @@
             android:maxEms="12"
             android:text="@{actor.displayLogin}"
             android:textColor="@color/gray_33"
-            android:textSize="@dimen/h4"
+            android:textSize="@dimen/h3"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/iv_avatar"
             app:layout_constraintTop_toTopOf="@id/iv_avatar"
@@ -60,6 +60,7 @@
             android:textColor="@color/gray_33"
             android:textSize="@dimen/body"
             android:textStyle="normal"
+            android:layout_marginTop="@dimen/margin_narrow"
             app:layout_constraintBottom_toBottomOf="@id/iv_avatar"
             app:layout_constraintStart_toStartOf="@id/tv_username"
             app:layout_constraintTop_toBottomOf="@id/tv_username" />
@@ -78,13 +79,10 @@
             android:id="@+id/cl_content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_normal"
             android:layout_marginBottom="@dimen/margin_normal"
-            android:padding="@dimen/margin_normal"
-            android:paddingStart="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_username"
-            app:layout_constraintTop_toBottomOf="@+id/tv_time">
+            app:layout_constraintTop_toBottomOf="@+id/tv_action">
 
             <TextView
                 android:id="@+id/tv_repository"
@@ -94,9 +92,11 @@
                 android:textColor="@color/gray_33"
                 android:textSize="@dimen/h4"
                 android:textStyle="bold"
+                android:ellipsize="middle"
+                android:lines="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="google/flutter-desktop-embedding " />
+                tools:text="google/flutter-desktop-embedding-203012290301" />
 
             <TextView
                 android:id="@+id/tv_event_desc"
@@ -115,12 +115,15 @@
                 android:gravity="center"
                 android:paddingStart="4dp"
                 android:paddingEnd="4dp"
-                android:text='@{payload.ref.substring("refs/heads/".length())}'
+                android:lines="1"
+                android:ellipsize="end"
+                android:maxEms="10"
+                android:text='@{payload.ref.replace("refs/heads/", "")}'
                 android:textColor="@color/selector_text_color_blue"
                 app:layout_constraintBottom_toBottomOf="@id/tv_event_desc"
                 app:layout_constraintStart_toEndOf="@id/tv_event_desc"
                 app:layout_constraintTop_toTopOf="@id/tv_event_desc"
-                tools:text="master" />
+                tools:text="fix/auto-update-sdk-212131214141241414124141" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
