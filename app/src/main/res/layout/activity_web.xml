@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ivan.com.github.web.WebActivity">
+    tools:context="com.ivan.github.web.WebActivity">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/ToolbarStyle"
         app:navigationIcon="@drawable/ic_close_black" />
@@ -18,18 +18,17 @@
         android:animateLayoutChanges="true"
         tools:visibility="gone">
 
-    <WebView
-        android:id="@+id/web_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:visibility="gone" />
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:visibility="gone" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
             style="@style/HorizontalProgressBar"
             tools:progress="45"
-            tools:secondaryProgress="60"
-            />
+            tools:secondaryProgress="60" />
     </FrameLayout>
 
 </LinearLayout>

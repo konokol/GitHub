@@ -1,6 +1,8 @@
 package com.ivan.github.core.net;
 
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
+
+import androidx.annotation.NonNull;
 
 import java.io.IOException;
 
@@ -17,14 +19,20 @@ import okhttp3.Response;
  */
 public class HttpHeaderInterceptor implements Interceptor  {
 
-
     @NonNull
     @Override
     public Response intercept(@NonNull Chain chain) throws IOException {
         Request request = chain.request();
-        request = request.newBuilder()
-                .addHeader("Content-Type", "application/json")
-                .build();
-        return chain.proceed(request);
+        Request.Builder builder = request.newBuilder();
+        if (TextUtils.isEmpty(request.header("Content-Type"))) {
+                builder.addHeader("Content-Type", "application/json");
+        }
+        if (TextUtils.isEmpty(request.header("Char-Set"))) {
+            builder.addHeader("Char-Set", "UTF-8");
+        }
+        if (TextUtils.isEmpty(request.header("Accept"))) {
+                builder.addHeader("Accept", "application/json");
+        }
+        return chain.proceed(builder.build());
     }
 }

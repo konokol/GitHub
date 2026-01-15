@@ -1,10 +1,10 @@
 package com.ivan.github;
 
 import android.app.Application;
+import android.content.Context;
 
-import com.github.utils.L;
-import com.ivan.github.app.App;
-import com.ivan.github.app.CrashHandler;
+import com.ivan.github.core.LifecycleMonitor;
+import com.ivan.github.core.init.AsyncAppInitializer;
 
 /**
  * Custom Application
@@ -14,22 +14,17 @@ import com.ivan.github.app.CrashHandler;
  * @since   v0.1
  */
 
-public class GitHubApplication extends Application{
+public class GitHubApplication extends Application {
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        this.registerActivityLifecycleCallbacks(new LifecycleMonitor());
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        GitHub.init(this);
-        L.setDebugLog(BuildConfig.DEBUG, L.VERBOSE);
-        App.init(this);
-        initCrashHandler();
-    }
-
-    private void initCrashHandler() {
-        if (BuildConfig.DEBUG) {
-            CrashHandler handler = CrashHandler.getInstance();
-            handler.init(this);
-            handler.setReportToLocal(true);
-        }
+        AsyncAppInitializer.getInstance(this).asyncInit();
     }
 }

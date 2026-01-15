@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/action_bar_default_height_material"
+    android:layout_height="@dimen/action_bar_default_height_material"
+    android:background="?actionBarItemBackground" >
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:scaleType="centerInside"
+        tools:src="@drawable/ic_menu_notification"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_bridge_num"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:textColor="@color/white"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="12dp"
+        android:padding="1dp"
+        android:textSize="5sp"
+        android:gravity="center"
+        android:layout_gravity="top|end"
+        tools:background="@drawable/ic_dot_blue"
+        tools:ignore="SmallSp" />
+
+</FrameLayout>

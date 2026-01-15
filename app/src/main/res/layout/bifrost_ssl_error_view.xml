@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="18dp"
+    android:paddingEnd="18dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/warning_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_warning_red"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ssl_error_title"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/ssl_error_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/webview_ssl_error_title"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:textColor="@color/gray_33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/warning_icon"
+        app:layout_constraintBottom_toTopOf="@+id/ssl_error_msg"
+        />
+
+    <TextView
+        android:id="@+id/ssl_error_msg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="14sp"
+        android:textColor="@color/gray_66"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ssl_error_title"
+        app:layout_constraintBottom_toTopOf="@+id/ssl_error_code_detail"
+        tools:text="@string/webview_ssl_error_desc"
+        />
+
+    <TextView
+        android:id="@+id/ssl_error_code_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="14sp"
+        android:textColor="@color/gray_66"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ssl_error_msg"
+        app:layout_constraintBottom_toTopOf="@+id/btn_cancel"
+        tools:text="ERR_CERT_AUTHORITY_INVALID"
+        />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/webview_ssl_error_cancel"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ssl_error_code_detail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <Button
+        style="?android:attr/buttonBarButtonStyle"
+        android:id="@+id/btn_process"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textAllCaps="false"
+        android:textColor="@color/gray_66"
+        android:text="@string/webview_ssl_error_process"
+        app:layout_constraintTop_toBottomOf="@+id/ssl_error_code_detail"
+        app:layout_constraintEnd_toStartOf="@+id/btn_cancel"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_cancel"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

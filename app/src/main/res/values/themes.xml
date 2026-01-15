@@ -11,7 +11,8 @@
         <item name="popupTheme">@style/AppTheme.PopupOverlay</item>
         <item name="android:progressBarStyle">@style/ProgressBarStyle</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
-        <item name="android:windowAnimationStyle">@style/AppAnimation.Activity</item>
+<!--        <item name="android:windowAnimationStyle">@style/AppAnimation.Activity</item>-->
+        <item name="android:navigationBarColor">@color/transparent</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
@@ -41,6 +42,19 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowAnimationStyle">@style/AppAnimation.Activity.Alpha</item>
+    </style>
+
+    <style name="AppTheme.Popup" parent="@style/AppTheme">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/AppAnimation.Activity.Popup</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:title">@null</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="colorPrimaryDark">@color/transparent</item>
     </style>
 
 </resources>

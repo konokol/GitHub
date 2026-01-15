@@ -18,7 +18,20 @@
         <item name="android:windowExitAnimation">@anim/no_anim</item>
     </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppAnimation.Activity.Popup" parent="@android:style/Animation.Activity">
+        <!--Window Animation-->
+        <item name="android:windowEnterAnimation">@anim/popup_in</item>
+        <item name="android:windowExitAnimation">@anim/popup_out</item>
+        <!--Activity Animation-->
+        <item name="android:activityOpenEnterAnimation">@anim/popup_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/no_anim</item>
+        <item name="android:activityCloseEnterAnimation">@anim/no_anim</item>
+        <item name="android:activityCloseExitAnimation">@anim/popup_out</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+<!--        <item name="elevation">4dp</item>-->
+    </style>
 
     <style name="ActionButtonOverflowStyle" parent="@android:style/Widget.ActionButton.Overflow">
         <item name="android:src">@drawable/ic_more_vert_black</item>
@@ -28,15 +41,10 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" >
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="elevation">4dp</item>
+        <item name="android:elevation">0dp</item>
         <!-- color of the menu overflow icon -->
         <item name="android:textColorSecondary">@color/black</item>
         <item name="colorButtonNormal">@color/colorAccent</item>
-        <!--<item name="actionOverflowButtonStyle">@style/ActionButtonOverflowStyle</item>-->
-        <!--<item name="android:actionButtonStyle">@style/ActionButtonStyle</item>-->
-        <!--<item name="titleTextColor">@color/gray_33</item>-->
-        <!--<item name="subtitleTextColor">@color/gray_33</item>-->
-        <!--<item name="elevation">8dp</item>-->
     </style>
 
     <style name="ActionButtonStyle" parent="Widget.AppCompat.ActionButton">
@@ -46,6 +54,8 @@
     </style>
 
     <style name="ProgressBarStyle" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">@color/colorAccent</item>
+        <item name="android:indeterminateTintMode">src_atop</item>
     </style>
 
     <!--Common Widget Styles-->
@@ -55,6 +65,7 @@
         <item name="android:background">?attr/colorPrimary</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
         <item name="elevation">4dp</item>
+        <item name="android:elevation">4dp</item>
     </style>
 
     <style name="HorizontalProgressBar" parent="@android:style/Widget.ProgressBar.Horizontal">
@@ -65,4 +76,25 @@
         <item name="android:max">100</item>
     </style>
 
+    <style name="EmptyViewStyle" >
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/design_default_color_background</item>
+        <item name="android:gravity">center</item>
+        <item name="message">@string/error</item>
+        <item name="drawable">@drawable/ic_octocat</item>
+    </style>
+
+    <style name="App"/>
+    <style name="App.SettingsItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textColor">@color/gray_33</item>
+        <item name="android:textSize">@dimen/h5</item>
+        <item name="android:background">@drawable/selector_item</item>
+    </style>
 </resources>

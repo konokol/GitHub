@@ -1,76 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_splash"
+    android:id="@+id/activity_landing"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:fitsSystemWindows="true"
-    tools:context="com.ivan.com.github.app.activity.SplashActivity">
+    tools:context="com.ivan.github.app.login.LandingActivity">
 
-    <View
-        android:visibility="gone"
-        android:id="@+id/status_bar_bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <com.github.design.widget.CirclePagerIndicator
-        android:id="@+id/indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/layout"/>
-
-    <LinearLayout
-        android:id="@+id/layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
-        android:orientation="horizontal">
-
-    <Button
-        style="?android:attr/buttonBarButtonStyle"
-        android:id="@+id/btn_sign_in"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:textColor="@color/gray_66"
-        android:text="@string/sign_in"
-        android:onClick="signIn"/>
-
-    <Button
-        style="?android:attr/buttonBarButtonStyle"
-        android:id="@+id/btn_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:textAllCaps="false"
-        android:textColor="@color/colorAccent"
-        android:text="@string/sign_up"
-        android:onClick="signUp"/>
-    </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_explore"
+        android:id="@+id/slogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout"
-        android:padding="10dp"
-        android:layout_marginTop="-50dp"
-        android:textSize="12sp"
-        android:textColor="@color/selector_text_color_blue"
+        android:layout_above="@+id/copy_right"
         android:layout_centerHorizontal="true"
-        android:onClick="explore"
-        android:text="@string/explore_on_github"
-        />
+        android:layout_marginBottom="10dp"
+        android:text="@string/slogan"
+        android:textSize="16sp"
+        android:typeface="sans" />
+
+
+    <LinearLayout
+        android:id="@+id/logo_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/slogan"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@null"
+            app:srcCompat="@drawable/ic_github" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center_vertical"
+            android:contentDescription="@null"
+            android:text="@string/app_name"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/copy_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/copy_right"
+        android:textSize="12sp"
+        android:typeface="sans" />
 
 </RelativeLayout>

@@ -3,10 +3,10 @@ package com.github.utils;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.github.design.BuildConfig;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import com.github.design.BuildConfig;
 
 /**
  * A tool class for Logcat
@@ -16,9 +16,10 @@ import com.github.design.BuildConfig;
  * @since       v1.0
  */
 
+@Deprecated
 public class L {
 
-    private static final String DEFAULT_TAG = BuildConfig.APPLICATION_ID;
+    private static final String DEFAULT_TAG = BuildConfig.LIBRARY_PACKAGE_NAME;
 
     public static final int VERBOSE = 2;
     public static final int DEBUG   = 3;
@@ -28,7 +29,6 @@ public class L {
     public static final int ASSERT  = 7;
 
     private L() {
-
     }
 
     private static boolean sLogVerboseEnable = false;

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Library</string>
+    <string name="default_empty_title">Error</string>
+    <string name="default_empty_text">Emm, there is nothing found.</string>
+    <string name="loading_more">loading more</string>
+    <string name="loading_more_none">no more content</string>
+    <string name="loading_more_error">loading error, tap to retry</string>
 </resources>

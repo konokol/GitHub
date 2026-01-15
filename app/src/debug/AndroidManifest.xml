@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+
+    <application
+        android:name="com.ivan.github.GitHubApplication"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name="com.ivan.github.app.login.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.ivan.github.app.login.LandingActivity"/>
+        <activity
+            android:name=".app.main.MainActivity"
+            android:launchMode="singleTop"/>
+        <activity android:name=".app.BaseActivity" />
+        <activity android:name=".web.WebActivity" />
+        <activity android:name=".app.ToolbarActivity" />
+        <activity
+            android:name=".app.login.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" >
+        </activity>
+
+        <activity android:name="io.github.debug.DebugActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="io.github.debug.dashboard"/>
+                <category android:name="io.github.category.DEBUG"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="io.github.debug.CrashInfoViewActivity"
+            android:launchMode="singleInstance"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="io.github.debug.crash_info"/>
+                <category android:name="io.github.category.DEBUG"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="io.github.debug.PhoneInformationActivity" />
+    </application>
+
+</manifest>

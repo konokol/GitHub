@@ -1,0 +1,19 @@
+/**
+ * get build time
+ */
+static def getBuildTime() {
+    return new Date().format("yyyyMMddHHmmssSSS")
+}
+
+android {
+    applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                outputFileName = "GitHub-${variant.name}-${variant.versionCode}-${getBuildTime}.apk"
+            }
+    }
+}
+
+ext {
+    getBuildTime = this.&getBuildTime
+}

@@ -2,25 +2,22 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion rootProject.ext.config.compileSdkVersion
-    buildToolsVersion rootProject.ext.config.buildToolsVersion
+    namespace 'com.github.design'
 
     defaultConfig {
         minSdkVersion rootProject.ext.config.minSdkVersion
         targetSdkVersion rootProject.ext.config.targetSdkVersion
-        versionCode rootProject.ext.config.versionCode
-        versionName rootProject.ext.config.versionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        multiDexEnabled true
+        signingConfig signingConfigs.debug
     }
 
-    publishNonDefault true
+    buildFeatures {
+        buildConfig = true
+    }
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-
-        beta {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -30,15 +27,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+        unitTests.includeAndroidResources = true
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+        incremental true
+    }
 }
 
 dependencies {
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$versions.desugar_jdk_libs"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation rootProject.ext.dependencies['retrofit2']
-    implementation rootProject.ext.dependencies['appcompat-v7']
+    implementation "androidx.appcompat:appcompat:$versions.appcompat"
+    implementation "com.google.android.material:material:$versions.material"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swiperefreshlayout"
+
+    implementation "io.reactivex.rxjava3:rxjava:$versions.rxjava3"
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    testImplementation 'org.mockito:mockito-core:1.10.19'
 }

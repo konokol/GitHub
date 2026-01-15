@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="route_schema">github</string>
+    <string name="route_authority">www.github.com</string>
+
+    <string name="error">Error</string>
+    <string name="default_error_content">Sorry, there is a problem.</string>
+    <string name="default_empty_content">There is nothing.</string>
+
+</resources>

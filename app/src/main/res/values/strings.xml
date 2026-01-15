@@ -1,14 +1,17 @@
 <resources>
+
+    <string name="androidx_startup_async">androidx.startup.async</string>
     <string name="app_name">GitHub</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="cancel">Cancel</string>
 
     <!--Landing-->
     <string name="slogan">How people build software</string>
-    <string name="copy_right">© 2016 GitHub, Inc. </string>
+    <string name="copy_right">©2026 GitHub, Inc. </string>
 
     <!--Splash-->
     <string name="sign_in">Sign in</string>
@@ -26,11 +29,13 @@
     <string name="splash_title_04">One platform, from start to finish</string>
     <string name="splash_dec_04">With hundreds of integrations, GitHub is\n flexible enough to be at the center of your\n development process.</string>
 
+    <!-- Main -->
+    <string name="main_click_exit">Click again to exit</string>
+
     <!--notification-->
     <string name="crash_ticker">there is a crash</string>
     <string name="crash_content_title">App crashes</string>
     <string name="crash_content_text">Click to view detail</string>
-
 
     <string name="debug_text">中文汉-字中文-aqe21nd13n34b1!23中文汉字-中文汉字-aqe21-n@k13n34b1!232中文汉-字中文-aqe21nd13n34b1!23中文汉字-中文#h$汉字-aqe21-n@k13n34b1!232中文汉-字中文-aqe21nd13n34b1!23中文汉字-中文汉字-aqe21-n@k13n34b1!232中文汉-字中文-aqe21nd13n34b1!23中文汉字-中文汉字-aqe21-n@k13n34b1!232中文汉-字中文-aqe21nd13n34b1!23中文汉字-中文汉字-aqe21-n@k13n34b1!232中文汉-字中文-aqe21nd13n34b1!23中文汉字-中文汉字-aqe21-n@k13n34b1!232中文汉-字中文-aqe21nd13n34b1!23中文汉字-中文汉字-aqe21-n@k13n34b1!232</string>
     <string name="debug_text2">中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字中文汉字</string>
@@ -41,22 +46,38 @@
     <string name="refresh">Refresh</string>
     <string name="share">Share</string>
     <string name="open_in_browser">Open in Browser</string>
-    <string name="not_app_found_to_open_the_link">No App found to open the link</string>
     <string name="explore_on_github">Explore on GitHub</string>
 
     <string name="action_menu_overflow_description">More options</string>
     <string name="title_activity_login">Sign in</string>
 
+    <!-- WebView -->
+    <string name="webview_error">Error</string>
+    <string name="webview_not_app_found_to_open_the_link">No App found to open the link</string>
+    <string name="webview_render_progress_gone">The system WebView component has crash.
+        \nPlease check if the system WebView if installed correctly.</string>
+    <string name="webview_page_error_title">page load error</string>
+    <string name="webview_page_error_msg">code:#%d %s</string>
+    <string name="webview_http_error_title">code:#%d %s</string>
+    <string name="webview_http_error_msg">code:#%d %s</string>
+    <string name="webview_ssl_error_title">Your connection is not private</string>
+    <string name="webview_ssl_error_desc">Attackers might be trying to steal your information from %s (
+        for example, passwords, message, or credit cards).</string>
+    <string name="webview_ssl_error_code">code:#%d %s</string>
+    <string name="webview_ssl_error_cancel">Cancel</string>
+    <string name="webview_ssl_error_process">still visit</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in</string>
-    <string name="action_sign_in_in_progress">Sign in…</string>
+    <string name="action_sign_in_in_progress">Sign in&#8230;</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">Incorrect username or password.</string>
     <string name="error_field_required">This field is required</string>
+    <string name="error_network_error">Network error</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
@@ -76,4 +97,31 @@
     <string name="github_privacy_statement">GitHub Privacy Statement</string>
     <string name="github_security">GitHub Security</string>
     <string name="get_help_with_github">Get help with GitHub</string>
+    <string name="tap_to_retry">Tap to Retry.</string>
+
+    <string name="test">test</string>
+    <string name="test1">test!#$!</string>
+    <string name="crash_me">crash me</string>
+    <string name="crash_info">Crash Information</string>
+    <string name="get_phone_information">Get Phone Information</string>
+    <string name="phone_information">Phone Information</string>
+    <string name="notifications">Notifications</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+
+    <!--Feed -->
+    <string name="feed_fragment">Feeds</string>
+    <string name="avatar">avatar</string>
+
+    <string name="notification_fragment">Notification</string>
+    <string name="settings_fragment">Settings</string>
+    <string name="at">at</string>
+
+    <string name="logout">Logout</string>
+    <string name="general">General</string>
+    <string name="notification">Notifications</string>
+    <string name="switch_account">Switch Account</string>
+    <string name="about_github">About Github</string>
+    <string name="network_diagnosis">Network Diagnosis</string>
+
 </resources>

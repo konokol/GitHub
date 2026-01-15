@@ -1,9 +1,9 @@
 package com.ivan.github.core.net;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
-import com.ivan.github.account.Account;
+import com.ivan.github.GitHub;
 
 import java.io.IOException;
 
@@ -24,8 +24,12 @@ public class AuthorizationInterceptor implements Interceptor {
     @Override
     public Response intercept(@NonNull Chain chain) throws IOException {
         Request request = chain.request();
-        String auth = Account.getInstance().getAuthorization();
-        if (!TextUtils.isEmpty(auth)) {
+        String auth = GitHub.appComponent().userCenter().getAuthorization();
+        if (TextUtils.isEmpty(auth)) {
+            auth = GitHub.appComponent().userCenter().getAuthorization();
+        }
+        String authorization = request.header("Authorization");
+        if (!TextUtils.isEmpty(auth) && TextUtils.isEmpty(authorization)) {
             request = request.newBuilder()
                     .addHeader("Authorization", "token " + auth)
                     .build();

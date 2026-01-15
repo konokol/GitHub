@@ -13,10 +13,10 @@ import okhttp3.logging.HttpLoggingInterceptor;
  */
 public class NetConfig {
 
-    private static NetConfig DEFAULT_CONFIG;
+    private static final NetConfig DEFAULT_CONFIG = new NetConfig();
 
-    private String url = "https://api.github.com/";
-    private int timeout = 5000;
+    private String url = "https://api.github.com";
+    private int timeout = 10_000;
     private HttpLoggingInterceptor.Level logLevel = HttpLoggingInterceptor.Level.BASIC;
 
     private NetConfig(){
@@ -29,9 +29,6 @@ public class NetConfig {
     }
 
     public static NetConfig defaultConfig() {
-        if (DEFAULT_CONFIG == null) {
-            DEFAULT_CONFIG = new NetConfig();
-        }
         if (BuildConfig.DEBUG) {
             DEFAULT_CONFIG.logLevel = HttpLoggingInterceptor.Level.BODY;
         } else {
@@ -56,9 +53,6 @@ public class NetConfig {
         private String url;
         private int timeout;
         private HttpLoggingInterceptor.Level logLevel;
-
-        public Builder() {
-        }
 
         public Builder url(String val) {
             url = val;

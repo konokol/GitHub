@@ -5,22 +5,21 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.ivan.com.github.account.LoginActivity">
+    tools:context="com.ivan.github.app.login.LoginActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        app:elevation="4dp">
+        android:fitsSystemWindows="true">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             style="@style/ToolbarStyle" />
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -36,11 +35,12 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/iv_logo"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:contentDescription="@null"
-                app:srcCompat="@drawable/ic_launcher" />
+                app:srcCompat="@drawable/ic_github" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -99,10 +99,11 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/selector_edit_text_bg"
                     android:imeOptions="actionNext"
-                    android:inputType="textAutoComplete"
+                    android:inputType="textAutoComplete|textEmailAddress"
                     android:lines="1"
                     android:maxLines="1"
                     android:nextFocusDown="@+id/tv_password"
+                    android:nextFocusForward="@+id/tv_password"
                     android:padding="10dp"
                     android:textColor="@color/gray_33"
                     android:textSize="12sp"
@@ -126,6 +127,7 @@
                     android:layout_below="@id/tv_username"
                     android:layout_marginTop="20dp"
                     android:gravity="end|right"
+                    android:focusable="false"
                     android:text="@string/forget_password"
                     android:textColor="@color/selector_text_color_blue"
                     android:textSize="14sp"
@@ -238,5 +240,5 @@
             </LinearLayout>
 
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

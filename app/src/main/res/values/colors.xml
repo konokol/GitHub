@@ -22,7 +22,7 @@
 <!--0% — 00-->
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorPrimaryDark">#40000000</color>
+    <color name="colorPrimaryDark">#E0E0E0</color>
     <color name="colorAccent">#28A745</color>
     <color name="textColorPrimary">#333333</color>
 
@@ -34,17 +34,24 @@
     <color name="gray_33">#333333</color>
     <color name="gray_66">#666666</color>
     <color name="gray_99">#999999</color>
+    <color name="gray_b4">#B4B4B4</color>
+    <color name="gray_cc">#CCCCCC</color>
+    <color name="gray_ee">#EEEEEE</color>
 
     <!--black-->
     <color name="black">#FF000000</color>
     <color name="black_p95">#F2000000</color>
     <color name="black_p90">#E6000000</color>
+    <color name="black_p40">#66000000</color>
+    <color name="black_p30">#4D000000</color>
     <color name="black_p20">#33000000</color>
 
     <!--UI-->
     <color name="gray_border">#CFD6DB</color>
+    <color name="half_gray_border">#CFD6DB</color>
     <color name="dark_red_error">#710D17</color>
     <color name="light_red_error">#FFD2D8</color>
 
+    <color name="ic_launcher_background">#FFFFFF</color>
 
 </resources>

@@ -1,58 +1,126 @@
 apply plugin: 'com.android.application'
+apply plugin: 'project-report'
+apply from: '../versions.gradle'
+apply from: '../graver.gradle'
 
 android {
-    compileSdkVersion rootProject.ext.config.compileSdkVersion
-    buildToolsVersion rootProject.ext.config.buildToolsVersion
+    namespace 'com.ivan.github'
+    compileSdk rootProject.ext.config.compileSdkVersion
     defaultConfig {
-        applicationId rootProject.ext.config.applicationId
+        applicationId "com.github.android.pro"
         minSdkVersion rootProject.ext.config.minSdkVersion
         targetSdkVersion rootProject.ext.config.targetSdkVersion
-        versionCode rootProject.ext.config.versionCode
-        versionName rootProject.ext.config.versionName
+        versionCode 1
+        versionName  "0.0.1"
+        buildConfigField "long", "BUILD", getBuildTime()+"L"
         vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        renderscriptTargetApi 18
+        renderscriptSupportModeEnabled true
+        multiDexEnabled true
+        manifestPlaceholders = [APP_NAME: "Github"]
     }
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+    buildFeatures {
+        dataBinding true
+        buildConfig true
+        renderScript true
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res', 'src/main/res/base', 'src/main/res/feed']
+            jniLibs.srcDirs = ['libs']
         }
 
-        beta {
+        debug {
+            res.srcDirs = ['src/debug/res']
+            jniLibs.srcDirs = ['libs']
+            java.srcDirs = ['src/debug/java']
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         debug {
+            debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            matchingFallbacks = ['release']
+        }
+    }
+
+    productFlavors {
+        alpha {
+            flavorDimensions "main"
+            versionName version + "-alpha"
         }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
         incremental true
+    }
+
+    dependenciesInfo {
+        includeInApk false
+        includeInBundle false
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+}
+
+configurations.configureEach {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'org.jetbrains.kotlin') {
+            details.useVersion '1.8.10'
+        }
     }
 }
 
 dependencies {
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$versions.desugar_jdk_libs"
     implementation project(":library")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation rootProject.ext.dependencies['appcompat-v7']
-    implementation rootProject.ext.dependencies['design']
-    implementation rootProject.ext.dependencies['constraint-layout']
 
-    implementation 'com.google.dagger:dagger:2.19'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.19'
+    implementation "androidx.appcompat:appcompat:$versions.appcompat"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swiperefreshlayout"
+    implementation "androidx.startup:startup-runtime:$versions.startup"
 
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation 'com.google.code.gson:gson:2.8.2'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.0.1'
+    implementation "com.google.code.gson:gson:$versions.gson"
+    implementation "com.google.android.material:material:$versions.material"
+    implementation "com.google.dagger:dagger:$versions.dagger"
+    implementation "com.google.dagger:dagger-android:$versions.dagger"
+    implementation "com.google.dagger:dagger-android-support:$versions.dagger"
+    annotationProcessor "com.google.dagger:dagger-compiler:$versions.dagger"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$versions.dagger"
 
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$versions.ok_logging"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.converter_gson"
+    implementation "io.reactivex.rxjava3:rxjava:$versions.rxjava3"
+    implementation "io.reactivex.rxjava3:rxandroid:$versions.rxandroid"
+    implementation "com.github.bumptech.glide:glide:$versions.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$versions.glide"
+
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.robolectric:robolectric:4.9'
 }

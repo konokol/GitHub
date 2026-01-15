@@ -1,5 +1,7 @@
 package com.ivan.github;
 
+import android.content.Context;
+
 import com.ivan.github.core.AppComponent;
 import com.ivan.github.core.AppModule;
 import com.ivan.github.core.DaggerAppComponent;
@@ -16,20 +18,9 @@ import com.ivan.github.core.net.NetModule;
 public final class GitHub {
 
     private static GitHub mGitHub;
-    private static AppComponent mDaggerAppComponent;
+    private static volatile AppComponent sDaggerAppComponent;
 
-    private GitHub() {
-        throw new IllegalArgumentException("not allowed");
-    }
-
-    private GitHub(GitHubApplication application) {
-        mDaggerAppComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(application))
-                .netModule(new NetModule(NetConfig.defaultConfig()))
-                .build();
-    }
-
-    private static GitHub get(GitHubApplication application) {
+    private static GitHub getInstance(Context application) {
         if (mGitHub == null) {
             synchronized (GitHub.class) {
                 if (mGitHub == null) {
@@ -40,12 +31,18 @@ public final class GitHub {
         return mGitHub;
     }
 
-    static void init(GitHubApplication application) {
-        get(application);
+    private GitHub(Context application) {
+        sDaggerAppComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(application))
+                .netModule(new NetModule(NetConfig.defaultConfig()))
+                .build();
+    }
 
+    public static GitHub init(Context application) {
+        return getInstance(application);
     }
 
     public static AppComponent appComponent() {
-        return mDaggerAppComponent;
+        return sDaggerAppComponent;
     }
 }

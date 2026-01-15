@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:duration="180">
+        <layer-list>
+            <item
+                android:bottom="12dp"
+                android:drawable="@drawable/ic_octo_cat"
+                android:left="12dp"
+                android:right="12dp"
+                android:top="12dp"/>
+            <item
+                android:drawable="@drawable/ic_loading1" />
+        </layer-list>
+    </item>
+
+    <item
+        android:duration="180">
+        <layer-list>
+            <item
+                android:drawable="@drawable/ic_octo_cat"
+                android:bottom="12dp"
+                android:left="12dp"
+                android:right="12dp"
+                android:top="12dp"/>
+            <item android:drawable="@drawable/ic_loading2" />
+        </layer-list>
+    </item>
+
+    <item
+        android:duration="180">
+        <layer-list>
+            <item
+                android:bottom="12dp"
+                android:drawable="@drawable/ic_octo_cat"
+                android:left="12dp"
+                android:right="12dp"
+                android:top="12dp"/>
+            <item android:drawable="@drawable/ic_loading3" />
+        </layer-list>
+    </item>
+
+    <item
+        android:duration="180">
+        <layer-list>
+            <item
+                android:bottom="12dp"
+                android:drawable="@drawable/ic_octo_cat"
+                android:left="12dp"
+                android:right="12dp"
+                android:top="12dp"/>
+            <item android:drawable="@drawable/ic_loading4" />
+        </layer-list>
+    </item>
+
+    <item
+        android:duration="180">
+        <layer-list>
+            <item
+                android:bottom="12dp"
+                android:drawable="@drawable/ic_octo_cat"
+                android:left="12dp"
+                android:right="12dp"
+                android:top="12dp"/>
+            <item android:drawable="@drawable/ic_loading5" />
+        </layer-list>
+    </item>
+
+    <item
+        android:duration="180">
+        <layer-list>
+            <item
+                android:bottom="12dp"
+                android:drawable="@drawable/ic_octo_cat"
+                android:left="12dp"
+                android:right="12dp"
+                android:top="12dp"/>
+            <item android:drawable="@drawable/ic_loading6" />
+        </layer-list>
+    </item>
+
+    <item
+        android:duration="180">
+        <layer-list>
+            <item
+                android:bottom="12dp"
+                android:drawable="@drawable/ic_octo_cat"
+                android:left="12dp"
+                android:right="12dp"
+                android:top="12dp"/>
+            <item android:drawable="@drawable/ic_loading7" />
+        </layer-list>
+    </item>
+
+    <item
+        android:duration="180">
+        <layer-list>
+            <item
+                android:bottom="12dp"
+                android:drawable="@drawable/ic_octo_cat"
+                android:left="12dp"
+                android:right="12dp"
+                android:top="12dp"/>
+            <item android:drawable="@drawable/ic_loading8" />
+        </layer-list>
+    </item>
+
+</animation-list>

@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_notification"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_menu_notification"
+        android:title="@string/notifications"
+        app:showAsAction="ifRoom"
+        app:actionProviderClass="com.ivan.github.widget.BridgeActionProvider"/>
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

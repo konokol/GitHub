@@ -3,7 +3,7 @@ package com.github.design.widget;
 import android.content.Context;
 import android.graphics.Paint;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;

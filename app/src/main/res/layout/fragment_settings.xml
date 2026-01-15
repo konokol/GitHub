@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".app.settings.SettingsFragment">
+
+    <TextView
+        android:id="@+id/tv_notification"
+        style="@style/App.SettingsItem"
+        android:layout_marginTop="10dp"
+        android:text="@string/notifications"
+        app:drawableEndCompat="@drawable/ic_chevron_right" />
+
+    <TextView
+        android:id="@+id/tv_general"
+        style="@style/App.SettingsItem"
+        android:text="@string/general"
+        app:drawableEndCompat="@drawable/ic_chevron_right" />
+
+    <TextView
+        android:id="@+id/tv_network_diagnosis"
+        style="@style/App.SettingsItem"
+        android:layout_marginTop="10dp"
+        android:text="@string/network_diagnosis"
+        app:drawableEndCompat="@drawable/ic_chevron_right" />
+
+    <TextView
+        android:id="@+id/tv_privacy"
+        style="@style/App.SettingsItem"
+        android:text="@string/privacy"
+        app:drawableEndCompat="@drawable/ic_chevron_right" />
+
+    <TextView
+        android:id="@+id/tv_about"
+        style="@style/App.SettingsItem"
+        android:text="@string/about_github"
+        app:drawableEndCompat="@drawable/ic_chevron_right" />
+
+    <TextView
+        android:id="@+id/tv_switch_account"
+        style="@style/App.SettingsItem"
+        android:layout_marginTop="10dp"
+        android:text="@string/switch_account"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/selector_item"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textColor="@color/selector_text_color_red"
+        android:textSize="@dimen/h5"
+        android:text="@string/logout" />
+
+</LinearLayout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_normal"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="@dimen/feed_list_avatar_size"
+        android:layout_height="@dimen/feed_list_avatar_size"
+        android:contentDescription="@string/avatar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_avatar_default"
+        />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:textSize="@dimen/h4"
+        android:textColor="@color/gray_33"
+        android:textStyle="bold"
+        android:maxEms="12"
+        android:ellipsize="marquee"
+        app:layout_constraintStart_toEndOf="@id/iv_avatar"
+        app:layout_constraintTop_toTopOf="@id/iv_avatar"
+        app:layout_constraintBottom_toBottomOf="@id/iv_avatar"
+        tools:text="Ivan J. Lee"
+        />
+
+    <TextView
+        android:id="@+id/tv_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:textSize="@dimen/body"
+        android:textColor="@color/gray_33"
+        android:textStyle="normal"
+        app:layout_constraintStart_toEndOf="@id/tv_username"
+        app:layout_constraintTop_toTopOf="@id/iv_avatar"
+        app:layout_constraintBottom_toBottomOf="@id/iv_avatar"
+        tools:text="push to repository "
+        />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_username"
+        app:layout_constraintBottom_toBottomOf="@id/tv_username"
+        tools:text="7 days ago"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:background="@drawable/bg_card_border"
+        android:padding="@dimen/margin_normal"
+        app:layout_constraintTop_toBottomOf="@+id/tv_time"
+        app:layout_constraintLeft_toLeftOf="@id/tv_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/tv_repository"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/h3"
+            android:textColor="@color/gray_33"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="google/flutter-desktop-embedding "
+            />
+
+        <TextView
+            android:id="@+id/tv_event_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_repository"
+            tools:text="1 commits to"
+            />
+
+        <TextView
+            android:id="@+id/tv_branch_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:textColor="@color/selector_text_color_blue"
+            android:background="@drawable/ic_rectangle_light_blue"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="@id/tv_event_desc"
+            app:layout_constraintStart_toEndOf="@id/tv_event_desc"
+            app:layout_constraintBottom_toBottomOf="@id/tv_event_desc"
+            tools:text="master"
+            />
+
+        <TextView
+            android:id="@+id/tv_commit_id1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue"
+            app:layout_constraintTop_toBottomOf="@id/tv_event_desc"
+            app:layout_constraintStart_toStartOf="@id/tv_repository"
+            tools:text="6a681cb"
+            />
+
+        <TextView
+            android:id="@+id/tv_commit_msg1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_66"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:lines="2"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@+id/tv_commit_id1"
+            app:layout_constraintTop_toTopOf="@id/tv_commit_id1"
+            tools:text="Updated legal notes and technical elements (commit intentionally broken)"
+            />
+
+        <TextView
+            android:id="@+id/tv_commit_id2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue"
+            app:layout_constraintTop_toBottomOf="@id/tv_commit_msg1"
+            app:layout_constraintStart_toStartOf="@id/tv_repository"
+            tools:text="579ed0e"
+            />
+
+        <TextView
+            android:id="@+id/tv_commit_msg2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_66"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:lines="2"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@+id/tv_commit_id2"
+            app:layout_constraintTop_toTopOf="@id/tv_commit_id2"
+            tools:text="melhoria em posicionamento de rodapé e de codigo. (this is a really long commit message. I don't know what this means, because I copied this message from a api.)"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_commit_msg2"
+            tools:text="4 more commits »"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_border"
+        android:layout_marginTop="@dimen/margin_normal"
+        app:layout_constraintTop_toBottomOf="@+id/cl_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

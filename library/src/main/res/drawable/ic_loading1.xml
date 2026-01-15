@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <group
+        android:pivotX="12"
+        android:pivotY="12"
+        android:rotation="0">
+        <path
+            android:pathData="M8.238, 1.693 A11 11 0 0 1 15.773 1.693"
+            android:strokeWidth="2"
+            android:strokeColor="#CCCCCC"
+            android:strokeLineCap="butt" />
+    </group>
+
+    <group
+        android:pivotX="12"
+        android:pivotY="12"
+        android:rotation="45">
+
+        <path
+            android:pathData="M8.238, 1.693 A11 11 0 0 1 15.773 1.693"
+            android:strokeWidth="2"
+            android:strokeColor="#B4B4B4"
+            android:strokeLineCap="butt" />
+    </group>
+
+    <group
+        android:pivotX="12"
+        android:pivotY="12"
+        android:rotation="90">
+
+        <path
+            android:pathData="M8.238, 1.693 A11 11 0 0 1 15.773 1.693"
+            android:strokeWidth="2"
+            android:strokeColor="#999999"
+            android:strokeLineCap="butt" />
+    </group>
+
+    <group
+        android:pivotX="12"
+        android:pivotY="12"
+        android:rotation="135">
+
+        <path
+            android:pathData="M8.238, 1.693 A11 11 0 0 1 15.773 1.693"
+            android:strokeWidth="2"
+            android:strokeColor="#666666"
+            android:strokeLineCap="butt" />
+    </group>
+
+    <group
+        android:pivotX="12"
+        android:pivotY="12"
+        android:rotation="180">
+
+        <path
+            android:pathData="M8.238, 1.693 A11 11 0 0 1 15.773 1.693"
+            android:strokeWidth="2"
+            android:strokeColor="#EEEEEE"
+            android:strokeLineCap="butt" />
+    </group>
+
+    <group
+        android:pivotX="12"
+        android:pivotY="12"
+        android:rotation="-135">
+
+        <path
+            android:pathData="M8.238, 1.693 A11 11 0 0 1 15.773 1.693"
+            android:strokeWidth="2"
+            android:strokeColor="#EEEEEE"
+            android:strokeLineCap="butt" />
+    </group>
+
+    <group
+        android:pivotX="12"
+        android:pivotY="12"
+        android:rotation="-90">
+
+        <path
+            android:pathData="M8.238, 1.693 A11 11 0 0 1 15.773 1.693"
+            android:strokeWidth="2"
+            android:strokeColor="#EEEEEE"
+            android:strokeLineCap="butt" />
+    </group>
+
+    <group
+        android:pivotX="12"
+        android:pivotY="12"
+        android:rotation="-45">
+
+        <path
+            android:pathData="M8.238, 1.693 A11 11 0 0 1 15.773 1.693"
+            android:strokeWidth="2"
+            android:strokeColor="#EEEEEE"
+            android:strokeLineCap="butt" />
+    </group>
+
+<!--    <group-->
+<!--        android:pivotX="12"-->
+<!--        android:pivotY="12"-->
+<!--        android:rotation="0">-->
+
+<!--        <path-->
+<!--            android:pathData="M12, 0 L 12 24"-->
+<!--            android:strokeWidth="0.05"-->
+<!--            android:strokeColor="#FF0000"-->
+<!--            android:strokeLineCap="square" />-->
+
+<!--        <path-->
+<!--            android:pathData="M0, 12 L 24 12"-->
+<!--            android:strokeWidth="0.05"-->
+<!--            android:strokeColor="#FF0000"-->
+<!--            android:strokeLineCap="square" />-->
+
+<!--        <path-->
+<!--            android:pathData="M0, 0 L 24 24"-->
+<!--            android:strokeWidth="0.05"-->
+<!--            android:strokeColor="#FF0000"-->
+<!--            android:strokeLineCap="square" />-->
+
+<!--        <path-->
+<!--            android:pathData="M24, 0 L 0 24"-->
+<!--            android:strokeWidth="0.05"-->
+<!--            android:strokeColor="#FF0000"-->
+<!--            android:strokeLineCap="square" />-->
+
+
+<!--        <path-->
+<!--            android:pathData="M8.238, 1.693 A11 11 0 0 1 15.773 1.693"-->
+<!--            android:strokeWidth="2"-->
+<!--            android:strokeColor="#FF0000"-->
+<!--            android:strokeLineCap="butt" />-->
+<!--    </group>-->
+
+    <!-- (rx ry x-axis-rotation large-arc-flag sweep-flag x y) -->
+    <!--  (x0,y0) = (R - r'sinθ, R - r'cosθ)      -->
+    <!--  (x1,y1) = (R + r'sinθ, R - r'cosθ)      -->
+
+</vector>
