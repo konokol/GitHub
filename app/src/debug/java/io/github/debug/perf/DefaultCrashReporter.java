@@ -1,4 +1,4 @@
-package com.ivan.github.perf;
+package io.github.debug.perf;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -14,7 +14,7 @@ import com.ivan.github.core.perf.AbsCrashReporter;
 import io.github.debug.CrashInfoViewActivity;
 
 /**
- * com.ivan.github.core.perf.DefaultCrashReporter
+ * io.github.core.perf.DefaultCrashReporter
  *
  * @author  Ivan on 2019-11-20
  * @version v0.1
@@ -30,7 +30,7 @@ public class DefaultCrashReporter extends AbsCrashReporter {
                 .addCategory("io.github.category.DEBUG")
                 .putExtra(CrashInfoViewActivity.EXTRA_DETAIL, e);
         PendingIntent intent = PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "io.github")
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
                 .setSmallIcon(R.drawable.ic_warning)
                 .setTicker(context.getText(R.string.crash_ticker))
