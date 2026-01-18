@@ -10,6 +10,4 @@
     <dimen name="action_bar_default_height_material">56dp</dimen>
     <dimen name="status_bar_default_height">25dp</dimen>
 
-    <dimen name="feed_list_avatar_size">36dp</dimen>
-
 </resources>

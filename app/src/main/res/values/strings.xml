@@ -110,7 +110,6 @@
     <string name="settings">Settings</string>
 
     <!--Feed -->
-    <string name="feed_fragment">Feeds</string>
     <string name="avatar">avatar</string>
 
     <string name="notification_fragment">Notification</string>

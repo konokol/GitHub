@@ -11,8 +11,8 @@ android {
         minSdkVersion rootProject.ext.config.minSdkVersion
         targetSdkVersion rootProject.ext.config.targetSdkVersion
         versionCode 1
-        versionName  "0.0.1"
-        buildConfigField "long", "BUILD", getBuildTime()+"L"
+        versionName "0.0.1"
+        buildConfigField "long", "BUILD", getBuildTime() + "L"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         renderscriptTargetApi 18
@@ -29,12 +29,18 @@ android {
 
     sourceSets {
         main {
-            res.srcDirs = ['src/main/res', 'src/main/res/base', 'src/main/res/feed']
+            res.srcDirs = [
+                    'src/main/res',
+                    'src/main/res/base',
+                    'src/main/res/feed'
+            ]
             jniLibs.srcDirs = ['libs']
         }
 
         debug {
-            res.srcDirs = ['src/debug/res']
+            res.srcDirs = [
+                    'src/debug/res',
+            ]
             jniLibs.srcDirs = ['libs']
             java.srcDirs = ['src/debug/java']
         }
