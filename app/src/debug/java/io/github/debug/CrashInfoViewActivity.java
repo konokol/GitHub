@@ -12,10 +12,10 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.ivan.github.BuildConfig;
-import com.ivan.github.R;
-import com.ivan.github.app.ToolbarActivity;
-import com.ivan.github.common.util.ExceptionUtils;
+import com.github.BuildConfig;
+import com.github.R;
+import com.github.app.ToolbarActivity;
+import com.github.common.util.ExceptionUtils;
 
 /**
  * display crash information

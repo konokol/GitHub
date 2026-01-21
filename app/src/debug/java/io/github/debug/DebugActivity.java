@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.ivan.github.R;
-import com.ivan.github.app.ToolbarActivity;
+import com.github.R;
+import com.github.app.ToolbarActivity;
 
 /**
  * @author Ivan

@@ -7,19 +7,19 @@
 
         <variable
             name="actor"
-            type="com.ivan.github.account.model.User" />
+            type="com.github.account.model.User" />
 
         <variable
             name="repo"
-            type="com.ivan.github.app.homepage.model.entity.event.Repository" />
+            type="com.github.app.homepage.model.entity.event.Repository" />
 
         <variable
             name="payload"
-            type="com.ivan.github.app.homepage.model.entity.event.payload.PushEventPayload" />
+            type="com.github.app.homepage.model.entity.event.payload.PushEventPayload" />
 
         <variable
             name="event"
-            type="com.ivan.github.app.homepage.model.entity.event.Event" />
+            type="com.github.app.homepage.model.entity.event.Event" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

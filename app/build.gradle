@@ -4,7 +4,7 @@ apply from: '../versions.gradle'
 apply from: '../graver.gradle'
 
 android {
-    namespace 'com.ivan.github'
+    namespace 'com.github'
     compileSdk rootProject.ext.config.compileSdkVersion
     defaultConfig {
         applicationId "com.github.android.pro"

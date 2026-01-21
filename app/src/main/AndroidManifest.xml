@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
 
     <application
-        android:name="com.ivan.github.GitHubApplication"
+        android:name="com.github.GitHubApplication"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
@@ -23,7 +23,7 @@
 
         <!-- splash -->
         <activity
-            android:name="com.ivan.github.app.login.SplashActivity"
+            android:name="com.github.app.login.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -38,7 +38,7 @@
 
         <!--  login  -->
         <activity
-            android:name="com.ivan.github.app.login.OAuthActivity"
+            android:name="com.github.app.login.OAuthActivity"
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize"
             android:exported="true">
@@ -53,7 +53,7 @@
         </activity>
 
         <activity
-            android:name="com.ivan.github.app.login.LoginActivity"
+            android:name="com.github.app.login.LoginActivity"
             android:exported="true"
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
@@ -68,7 +68,7 @@
         </activity>
 
         <activity
-            android:name="com.ivan.github.app.login.LandingActivity"
+            android:name="com.github.app.login.LandingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -81,7 +81,7 @@
         </activity>
 
         <activity
-            android:name="com.ivan.github.app.main.MainActivity"
+            android:name="com.github.app.main.MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="fullSensor">
@@ -96,7 +96,7 @@
         </activity>
 
         <activity
-            android:name="com.ivan.github.web.WebActivity"
+            android:name="com.github.web.WebActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -109,8 +109,8 @@
         </activity>
 
 
-        <activity android:name="com.ivan.github.app.BaseActivity" />
-        <activity android:name="com.ivan.github.app.ToolbarActivity" />
+        <activity android:name="com.github.app.BaseActivity" />
+        <activity android:name="com.github.app.ToolbarActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -119,22 +119,22 @@
             tools:node="merge">
 
             <meta-data
-                android:name="com.ivan.github.core.init.CrashReporterInit"
+                android:name="com.github.core.init.CrashReporterInit"
                 android:value="androidx.startup" />
             <meta-data
-                android:name="com.ivan.github.core.init.AppInit"
+                android:name="com.github.core.init.AppInit"
                 android:value="androidx.startup" />
             <meta-data
-                android:name="com.ivan.github.core.init.LogInit"
+                android:name="com.github.core.init.LogInit"
                 android:value="androidx.startup" />
             <meta-data
-                android:name="com.ivan.github.core.init.BaseConfigInit"
+                android:name="com.github.core.init.BaseConfigInit"
                 android:value="androidx.startup" />
             <meta-data
-                android:name="com.ivan.github.core.init.UserCenterInit"
+                android:name="com.github.core.init.UserCenterInit"
                 android:value="androidx.startup" />
             <meta-data
-                android:name="com.ivan.github.core.init.SettingsInit"
+                android:name="com.github.core.init.SettingsInit"
                 android:value="androidx.startup.async" />
         </provider>
 

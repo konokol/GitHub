@@ -1,8 +1,8 @@
-package com.ivan.github;
+package com.github;
 
-import com.ivan.github.account.model.Authorization;
-import com.ivan.github.api.OAuthService;
-import com.ivan.github.core.net.HttpClient;
+import com.github.account.model.Authorization;
+import com.github.api.OAuthService;
+import com.github.core.net.HttpClient;
 
 import org.junit.Before;
 import org.junit.Test;

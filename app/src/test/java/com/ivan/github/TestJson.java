@@ -1,4 +1,4 @@
-package com.ivan.github;
+package com.github;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

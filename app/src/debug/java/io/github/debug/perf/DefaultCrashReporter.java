@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import androidx.core.app.NotificationCompat;
 
-import com.ivan.github.GitHub;
-import com.ivan.github.R;
-import com.ivan.github.core.perf.AbsCrashReporter;
+import com.github.GitHub;
+import com.github.R;
+import com.github.core.perf.AbsCrashReporter;
 
 import io.github.debug.CrashInfoViewActivity;
 

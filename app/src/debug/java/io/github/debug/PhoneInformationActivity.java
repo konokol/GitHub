@@ -5,8 +5,8 @@ import androidx.annotation.Nullable;
 import android.widget.TextView;
 
 import com.github.utils.SecureSharedPreference;
-import com.ivan.github.R;
-import com.ivan.github.app.ToolbarActivity;
+import com.github.R;
+import com.github.app.ToolbarActivity;
 
 /**
  * Phone Details

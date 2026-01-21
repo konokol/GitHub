@@ -1,4 +1,4 @@
-package com.ivan.github;
+package com.github;
 
 import java.util.List;
 

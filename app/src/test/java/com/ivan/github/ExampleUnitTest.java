@@ -1,4 +1,4 @@
-package com.ivan.github;
+package com.github;
 
 import org.junit.Test;
 

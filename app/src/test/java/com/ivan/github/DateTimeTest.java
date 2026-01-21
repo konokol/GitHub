@@ -1,11 +1,11 @@
-package com.ivan.github;
+package com.github;
 
 import android.text.format.DateUtils;
 
 import org.junit.Test;
 
 /**
- * com.ivan.github
+ * com.github
  * <p>
  *
  * @author Ivan J. Lee on 2023-02-04 21:38
