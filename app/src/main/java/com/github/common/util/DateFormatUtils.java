@@ -3,6 +3,7 @@ package com.github.common.util;
 import android.text.format.DateUtils;
 
 import java.util.Date;
+import java.util.Locale;
 
 import static android.text.format.DateUtils.FORMAT_ABBREV_ALL;
 import static android.text.format.DateUtils.FORMAT_ABBREV_MONTH;
@@ -23,6 +24,10 @@ import static android.text.format.DateUtils.SECOND_IN_MILLIS;
  * @since v1.0
  **/
 public class DateFormatUtils {
+
+    static {
+        Locale.setDefault(Locale.US);
+    }
 
     public static CharSequence getTimeSpan(Date date) {
         if (date == null) {
