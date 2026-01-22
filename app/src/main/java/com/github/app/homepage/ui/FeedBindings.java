@@ -5,9 +5,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
 import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
+import com.github.R;
 import com.github.common.util.DateFormatUtils;
 
 import java.util.Date;
@@ -20,11 +22,15 @@ public class FeedBindings {
      * @param imageUrl url to be set
      */
     @BindingAdapter(value = {"imageUrl", "error", "placeholder"}, requireAll = false)
-    public static void setImageUrl(ImageView imageView, String imageUrl, Drawable drawable, Drawable placeholder) {
+    public static void setImageUrl(ImageView imageView, String imageUrl, Drawable errDrawable, Drawable placeholder) {
         Glide.with(imageView)
                 .load(imageUrl)
-                .error(drawable)
-                .placeholder(placeholder)
+                .error(errDrawable == null ?
+                        ContextCompat.getDrawable(imageView.getContext(), R.drawable.ic_avatar_default) :
+                        errDrawable)
+                .placeholder(placeholder == null ?
+                        ContextCompat.getDrawable(imageView.getContext(), R.drawable.ic_avatar_default) :
+                        placeholder)
                 .into(imageView);
     }
 

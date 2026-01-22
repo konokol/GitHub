@@ -1,20 +1,19 @@
 package com.github.app.homepage.ui;
 
-import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.View;
 import android.widget.TextView;
 
-import com.github.design.widget.SwipeRefreshRecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.github.R;
 import com.github.app.homepage.DaggerFeedComponent;
+import com.github.app.homepage.FeedContract;
 import com.github.app.homepage.FeedModule;
 import com.github.app.homepage.model.entity.event.Event;
-import com.github.app.homepage.FeedContract;
 import com.github.app.homepage.presenter.FeedPresenter;
 import com.github.core.mvp.BaseMvpFragment;
+import com.github.design.widget.SwipeRefreshRecyclerView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -36,13 +35,6 @@ public class FeedFragment extends BaseMvpFragment<FeedContract.Presenter> implem
 
     public FeedFragment() {
         inject();
-    }
-
-    public static FeedFragment newInstance() {
-        FeedFragment fragment = new FeedFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override

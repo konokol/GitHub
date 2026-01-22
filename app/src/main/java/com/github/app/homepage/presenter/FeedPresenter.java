@@ -123,7 +123,7 @@ public class FeedPresenter extends RxBasePresenter<FeedContract.View>
     public void loadMore() {
         int index = mData.size() / FeedContract.pageSize;
         if (mData.size() % FeedContract.pageSize == 0) { //not the last page
-            listUserEvents(index);
+            listUserEvents(index, false);
         }
     }
 
