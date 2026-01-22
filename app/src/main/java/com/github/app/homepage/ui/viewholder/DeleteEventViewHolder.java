@@ -53,6 +53,8 @@ public class DeleteEventViewHolder extends FeedViewHolder {
         DeleteEventPayload payload = GsonUtils.from(event.getPayload(), DeleteEventPayload.class);
         Glide.with(getContext())
                 .load(event.getActor().avatarUrl)
+                .error(R.drawable.ic_avatar_default)
+                .placeholder(R.drawable.ic_avatar_default)
                 .into(mIvAvatar);
         mTvUsername.setText(event.getActor().getName());
         if (DeleteEventPayload.REF_TYPE_BRANCH.equals(payload.getRefType())) {

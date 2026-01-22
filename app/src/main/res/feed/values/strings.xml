@@ -2,8 +2,8 @@
 <resources>
     <string name="feed_fragment">Feeds</string>
     <string name="feed_action_default">performed a action(%1$s)</string>
-    <string name="feed_delete_branch">delete a branch</string>
-    <string name="feed_delete_tag">delete a tag</string>
+    <string name="feed_delete_branch">delete branch</string>
+    <string name="feed_delete_tag">delete tag</string>
     <string name="feed_delete">delete</string>
     <string name="feed_push_action">push to repository</string>
     <string name="feed_at_branch">at branch</string>

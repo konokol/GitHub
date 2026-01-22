@@ -7,6 +7,38 @@ import com.github.app.homepage.model.entity.event.Repository;
 
 /**
  * com.github.app.events.model.payload.DeleteEventPayload
+ * <p>
+ *
+ * <pre>
+ * {@code
+ *   {
+ *     "id": "7722172991",
+ *     "type": "DeleteEvent",
+ *     "actor": {
+ *       "id": 48159191,
+ *       "login": "52Lxcloud",
+ *       "display_login": "52Lxcloud",
+ *       "gravatar_id": "",
+ *       "url": "https://api.github.com/users/52Lxcloud",
+ *       "avatar_url": "https://avatars.githubusercontent.com/u/48159191?"
+ *     },
+ *     "repo": {
+ *       "id": 1123083345,
+ *       "name": "52Lxcloud/core",
+ *       "url": "https://api.github.com/repos/52Lxcloud/core"
+ *     },
+ *     "payload": {
+ *       "ref": "fix/s3-upload-encoding",
+ *       "ref_type": "branch",
+ *       "full_ref": "refs/heads/fix/s3-upload-encoding",
+ *       "pusher_type": "user"
+ *     },
+ *     "public": true,
+ *     "created_at": "2026-01-22T16:14:35Z"
+ *   }
+ *}
+ * </pre>
+ *
  *
  * @author  Iavn J. Lee on 2020-01-01
  * @version v0.1
