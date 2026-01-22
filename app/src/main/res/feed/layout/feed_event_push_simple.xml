@@ -39,18 +39,19 @@
 
         <TextView
             android:id="@+id/tv_username"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal"
             android:ellipsize="marquee"
-            android:maxEms="12"
+            android:singleLine="true"
             android:text="@{actor.displayLogin}"
             android:textColor="@color/gray_33"
             android:textSize="@dimen/h3"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/iv_avatar"
+            app:layout_constraintEnd_toStartOf="@+id/tv_time"
             app:layout_constraintTop_toTopOf="@id/iv_avatar"
-            tools:text="Ivan J. Lee" />
+            tools:text="Ivan J. Leeeeeeeeeeeeeeeeeeeeeeeeeeeee" />
 
         <TextView
             android:id="@+id/tv_action"
@@ -92,7 +93,7 @@
                 android:textColor="@color/gray_33"
                 android:textSize="@dimen/h4"
                 android:textStyle="bold"
-                android:ellipsize="middle"
+                android:singleLine="true"
                 android:lines="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -110,14 +111,14 @@
                 android:id="@+id/tv_branch_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginStart="@dimen/margin_narrow"
                 android:background="@drawable/ic_rectangle_light_blue"
                 android:gravity="center"
                 android:paddingStart="4dp"
                 android:paddingEnd="4dp"
                 android:lines="1"
                 android:ellipsize="end"
-                android:maxEms="10"
+                android:maxEms="16"
                 android:text='@{payload.ref.replace("refs/heads/", "")}'
                 android:textColor="@color/selector_text_color_blue"
                 app:layout_constraintBottom_toBottomOf="@id/tv_event_desc"

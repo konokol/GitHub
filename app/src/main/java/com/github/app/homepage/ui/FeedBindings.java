@@ -1,6 +1,7 @@
 package com.github.app.homepage.ui;
 
 import android.graphics.drawable.Drawable;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,5 +34,14 @@ public class FeedBindings {
             return;
         }
         textView.setText(DateFormatUtils.getTimeSpan(date));
+    }
+
+    @BindingAdapter({"visible"})
+    public static void setVisible(View view, boolean visible) {
+        if (visible) {
+            view.setVisibility(View.VISIBLE);
+        } else {
+            view.setVisibility(View.GONE);
+        }
     }
 }

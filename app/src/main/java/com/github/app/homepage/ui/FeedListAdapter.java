@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.github.app.homepage.model.entity.event.EventType;
 import com.github.design.widget.BaseRecyclerViewAdapter;
 import com.github.app.homepage.model.entity.event.Event;
 
@@ -26,11 +27,18 @@ public class FeedListAdapter extends BaseRecyclerViewAdapter<FeedViewHolder, Eve
 
     @NonNull
     @Override
-    public FeedViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public FeedViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         if (layoutInflater == null) {
             layoutInflater = LayoutInflater.from(getContext());
         }
-        return FeedViewHolderFactory.create(getContext(), layoutInflater, viewGroup, getData(i));
+        return FeedViewHolderFactory.create(getContext(), layoutInflater, viewGroup, viewType);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        Event event = getData(position);
+        EventType eventType = EventType.fromName(event.getType());
+        return eventType == null ? 0 : eventType.type();
     }
 
     @Override

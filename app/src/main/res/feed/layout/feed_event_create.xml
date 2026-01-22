@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+
+        <variable
+            name="actor"
+            type="com.github.account.model.User" />
+
+        <variable
+            name="repo"
+            type="com.github.app.homepage.model.entity.event.Repository" />
+
+        <variable
+            name="payload"
+            type="com.github.app.homepage.model.entity.event.payload.CreateEventPayload" />
+
+        <variable
+            name="event"
+            type="com.github.app.homepage.model.entity.event.Event" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="@dimen/feed_list_avatar_size"
+            android:layout_height="@dimen/feed_list_avatar_size"
+            android:contentDescription="@string/avatar"
+            app:imageUrl="@{actor.avatarUrl}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_avatar_default" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:ellipsize="marquee"
+            android:maxEms="12"
+            android:singleLine="true"
+            android:text="@{actor.displayLogin}"
+            android:textColor="@color/gray_33"
+            android:textSize="@dimen/h3"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iv_avatar"
+            app:layout_constraintEnd_toStartOf="@+id/tv_time"
+            app:layout_constraintTop_toTopOf="@id/iv_avatar"
+            tools:text="Ivan J. Lee12131231313131313131313131" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/iv_avatar"
+            app:layout_constraintStart_toStartOf="@id/tv_username"
+            app:layout_constraintTop_toBottomOf="@id/tv_username" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:date="@{event.createdAt}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_username"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_username"
+            tools:text="7 days ago" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/tv_action_branch_group"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility='@{TextUtils.equals(payload.refType, "branch") ? View.VISIBLE : View.GONE }'
+            app:constraint_referenced_ids="tv_action_branch,tv_branch_name"
+            />
+
+        <TextView
+            android:id="@+id/tv_action_branch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_narrow"
+            android:text="@string/feed_action_create_branch"
+            android:textColor="@color/gray_33"
+            android:textSize="@dimen/body"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@id/tv_username"
+            app:layout_constraintTop_toBottomOf="@+id/tv_username"
+            />
+
+        <TextView
+            android:id="@+id/tv_branch_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_narrow"
+            android:background="@drawable/ic_rectangle_light_blue"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:maxEms="15"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text='@{payload.ref}'
+            android:textColor="@color/selector_text_color_blue"
+            app:layout_constraintTop_toTopOf="@id/tv_action_branch"
+            app:layout_constraintBottom_toBottomOf="@id/tv_action_branch"
+            app:layout_constraintStart_toEndOf="@id/tv_action_branch"
+            tools:text="fix/auto-update-sdk-212131214141241414124141" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/tv_action_tag_group"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility='@{TextUtils.equals(payload.refType, "tag") ? View.VISIBLE : View.GONE }'
+            app:constraint_referenced_ids="tv_action_tag,tv_tag_name"
+            />
+
+        <TextView
+            android:id="@+id/tv_action_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_narrow"
+            android:text="@string/feed_action_create_tag"
+            android:textColor="@color/gray_33"
+            android:textSize="@dimen/body"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@id/tv_username"
+            app:layout_constraintTop_toBottomOf="@+id/tv_action_branch"
+            />
+
+        <TextView
+            android:id="@+id/tv_tag_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_narrow"
+            android:background="@drawable/ic_rectangle_light_blue"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:maxEms="15"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text='@{payload.ref}'
+            android:textColor="@color/selector_text_color_blue"
+            app:layout_constraintTop_toTopOf="@id/tv_action_tag"
+            app:layout_constraintBottom_toBottomOf="@id/tv_action_tag"
+            app:layout_constraintStart_toEndOf="@id/tv_action_tag"
+            tools:text="fix/auto-update-sdk-212131214141241414124141" />
+
+        <TextView
+            android:id="@+id/tv_action_repo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_narrow"
+            android:text="@string/feed_action_create_repo"
+            android:textColor="@color/gray_33"
+            android:textSize="@dimen/body"
+            android:textStyle="normal"
+            android:visibility='@{TextUtils.equals(payload.refType, "repository") ? View.VISIBLE : View.GONE }'
+            app:layout_constraintStart_toStartOf="@id/tv_username"
+            app:layout_constraintTop_toBottomOf="@+id/tv_action_tag"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_username"
+            app:layout_constraintTop_toBottomOf="@+id/tv_action_repo">
+
+            <TextView
+                android:id="@+id/tv_repository"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:singleLine="true"
+                android:text="@{repo.name}"
+                android:textColor="@color/gray_33"
+                android:textSize="@dimen/h4"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="google/flutter-desktop-embedding-203012290301" />
+
+            <TextView
+                android:id="@+id/tv_event_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{payload.description}"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:visibility="@{TextUtils.isEmpty(payload.description) ? View.GONE : View.VISIBLE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_repository"
+                tools:text="Primary Git Repository for the Zephyr Project. Zephyr is a new generation, scalable, optimized, secure RTOS for multiple hardware architectures.Primary Git Repository for the Zephyr Project. Zephyr is a new generation, scalable, optimized, secure RTOS for multiple hardware architectures."
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:background="@color/gray_border"
+            app:layout_constraintTop_toBottomOf="@+id/cl_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

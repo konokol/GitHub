@@ -67,7 +67,8 @@ public class DefaultViewHolder extends FeedViewHolder {
                         .build()))
                 .into(mIvAvatar);
         mTvUsername.setText(event.getActor().getDisplayLogin());
-        mTvAction.setText(R.string.feed_action_default);
+        String action = getContext().getString(R.string.feed_action_default, event.getType());
+        mTvAction.setText(action);
         mTvTime.setText(DateFormatUtils.getTimeSpan(event.getCreatedAt()));
         mTvRepository.setText(event.getRepo().getName());
     }

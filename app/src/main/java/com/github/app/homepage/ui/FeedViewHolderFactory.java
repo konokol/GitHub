@@ -8,6 +8,8 @@ import androidx.viewbinding.ViewBinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.github.BuildConfig;
+import com.github.app.homepage.ui.viewholder.CreateEventViewHolder;
 import com.github.log.Logan;
 import com.github.R;
 import com.github.app.homepage.model.entity.event.Event;
@@ -32,15 +34,16 @@ public class FeedViewHolderFactory {
 
     private static final String TAG = "FeedViewHolderFactory";
 
-    private static final Map<String, Class<? extends FeedViewHolder>> classMap = new HashMap<>() {
+    private static final Map<Integer, Class<? extends FeedViewHolder>> classMap = new HashMap<>() {
         {
-            put(EventType.DELETE_EVENT, DeleteEventViewHolder.class);
-            put(EventType.PUSH_EVENT, PushEventViewHolder.class);
+            put(EventType.DELETE_EVENT.type(), DeleteEventViewHolder.class);
+            put(EventType.PUSH_EVENT.type(), PushEventViewHolder.class);
+            put(EventType.CREATE_EVENT.type(), CreateEventViewHolder.class);
         }
     };
 
-    public static @NonNull FeedViewHolder create(Context context, LayoutInflater inflater, ViewGroup parent, Event event) {
-        Class<? extends FeedViewHolder> clazz = classMap.get(event.getType());
+    public static @NonNull FeedViewHolder create(Context context, LayoutInflater inflater, ViewGroup parent, int eventType) {
+        Class<? extends FeedViewHolder> clazz = classMap.get(eventType);
         if (clazz == null) {
             return DefaultViewHolder.newInstance(inflater, parent, R.layout.feed_event_default);
         }

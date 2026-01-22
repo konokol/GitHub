@@ -6,6 +6,18 @@ import com.github.app.homepage.model.entity.event.Repository;
 
 /**
  * com.github.app.events.model.payload.CreateEventPayload
+ * <p>
+ * <pre>
+ *
+ *    {
+ *       "ref": "pr_mec5_dtsi_gpio_fix",
+ *       "ref_type": "branch",
+ *       "full_ref": "refs/heads/pr_mec5_dtsi_gpio_fix",
+ *       "master_branch": "main",
+ *       "description": "Primary Git Repository for the Zephyr Project. Zephyr is a new generation, scalable, optimized, secure RTOS for multiple hardware architectures.",
+ *       "pusher_type": "user"
+ *     },
+ * </pre>
  *
  * @author  Ivan on 2019-12-29
  * @version v0.1
@@ -13,15 +25,13 @@ import com.github.app.homepage.model.entity.event.Repository;
  **/
 public class CreateEventPayload extends Payload {
 
-    private String ref;
+    public String ref;
     @SerializedName("ref_type")
-    private String refType;
+    public String refType;
     @SerializedName("master_branch")
-    private String masterBranch;
-    private String description;
+    public String masterBranch;
+    public String description;
     @SerializedName("pusher_type")
-    private String pusherType;
-    private Repository repository;
-
+    public String pusherType;
 
 }

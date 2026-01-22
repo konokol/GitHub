@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="feed_fragment">Feeds</string>
-    <string name="feed_action_default">performed a action</string>
+    <string name="feed_action_default">performed a action(%1$s)</string>
     <string name="feed_delete_branch">delete a branch</string>
     <string name="feed_delete_tag">delete a tag</string>
     <string name="feed_delete">delete</string>
     <string name="feed_push_action">push to repository</string>
     <string name="feed_at_branch">at branch</string>
+    <string name="feed_action_create_branch">create branch</string>
+    <string name="feed_action_create_tag">create tag</string>
+    <string name="feed_action_create_repo">create repository</string>
     <string name="feed_empty_text">No feeds</string>
 </resources>
