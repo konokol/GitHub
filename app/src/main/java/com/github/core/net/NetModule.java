@@ -4,12 +4,12 @@ import com.github.log.Logan;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.github.api.OAuthService;
 
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
 
+import com.pankoku.appmock.AppMock;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -21,9 +21,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * net module
  *
- * @author  Ivan on 2018-11-16 23:58.
+ * @author Ivan on 2018-11-16 23:58.
  * @version v0.1
- * @since   v1.0
+ * @since v1.0
  */
 @Module
 public class NetModule {
@@ -54,6 +54,7 @@ public class NetModule {
     OkHttpClient provideOkHttpClient() {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
         client.callTimeout(mNetConfig.getTimeout(), TimeUnit.MILLISECONDS)
+                .addInterceptor(AppMock.instance.newInterceptor(""))
                 .addInterceptor(new AuthorizationInterceptor())
                 .addInterceptor(new HttpLoggingInterceptor(
                         message -> Logan.i("GitHub-HTTP", message)

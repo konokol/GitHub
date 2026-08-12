@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 
-import com.github.utils.SecureSharedPreference;
-import com.github.GitHubApplication;
 import com.github.account.IUserCenter;
 import com.github.account.UserCenterImpl;
+import com.github.app.GHStorage;
+import com.github.utils.SecureSharedPreference;
 
 import javax.inject.Singleton;
 
@@ -58,5 +58,11 @@ public class AppModule {
     @Singleton
     IUserCenter provideUserCenter() {
         return UserCenterImpl.getInstance();
+    }
+
+    @Provides
+    @Singleton
+    GHStorage provideGHStorage(Context context) {
+        return new GHStorage(context);
     }
 }

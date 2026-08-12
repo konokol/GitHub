@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 
-import com.github.utils.SecureSharedPreference;
-import com.google.gson.Gson;
 import com.github.GitHubApplication;
 import com.github.account.IUserCenter;
+import com.github.app.GHStorage;
 import com.github.core.net.NetModule;
+import com.github.utils.SecureSharedPreference;
+import com.google.gson.Gson;
 
 import javax.inject.Singleton;
 
@@ -29,6 +30,7 @@ public interface AppComponent extends AndroidInjector<GitHubApplication> {
 
     Context applicationContext();
 
+    @Deprecated
     SharedPreferences preference();
 
     Resources resources();
@@ -41,4 +43,5 @@ public interface AppComponent extends AndroidInjector<GitHubApplication> {
 
     IUserCenter userCenter();
 
+    GHStorage ghStorage();
 }

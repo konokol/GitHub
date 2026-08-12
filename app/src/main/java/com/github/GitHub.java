@@ -24,6 +24,7 @@ public final class GitHub {
         if (mGitHub == null) {
             synchronized (GitHub.class) {
                 if (mGitHub == null) {
+                    //noinspection InstantiationOfUtilityClass
                     mGitHub = new GitHub(application);
                 }
             }

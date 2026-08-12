@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.github.core.LifecycleMonitor;
 import com.github.core.init.AsyncAppInitializer;
+import com.pankoku.ghstorage.mmkv.MMKVFactory;
 
 /**
  * Custom Application
@@ -25,6 +26,9 @@ public class GitHubApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        // 初始化 MMKV（用于支持加密存储）
+        MMKVFactory.initialize(this);
+        
         AsyncAppInitializer.getInstance(this).asyncInit();
     }
 }

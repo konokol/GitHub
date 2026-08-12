@@ -5,7 +5,7 @@ ext {
      */
     config = [
             compileSdkVersion: 35,
-            minSdkVersion    : 21,
+            minSdkVersion    : 23,
             targetSdkVersion : 35,
     ]
 

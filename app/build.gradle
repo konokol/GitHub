@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'project-report'
 apply from: '../versions.gradle'
 apply from: '../graver.gradle'
@@ -99,8 +101,17 @@ configurations.configureEach {
 
 dependencies {
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$versions.desugar_jdk_libs"
-    implementation project(":library")
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(":library")
+    implementation project(":appmock")
+
+    // storage
+    implementation project(":storage")
+    implementation project(":storage-datastore")
+    implementation project(":storage-mmkv")
+    implementation 'com.tencent:mmkv:2.4.1'
 
     implementation "androidx.appcompat:appcompat:$versions.appcompat"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
@@ -112,8 +123,8 @@ dependencies {
     implementation "com.google.dagger:dagger:$versions.dagger"
     implementation "com.google.dagger:dagger-android:$versions.dagger"
     implementation "com.google.dagger:dagger-android-support:$versions.dagger"
-    annotationProcessor "com.google.dagger:dagger-compiler:$versions.dagger"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$versions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+    kapt "com.google.dagger:dagger-android-processor:$versions.dagger"
 
     implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
@@ -122,7 +133,7 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxjava:$versions.rxjava3"
     implementation "io.reactivex.rxjava3:rxandroid:$versions.rxandroid"
     implementation "com.github.bumptech.glide:glide:$versions.glide"
-    annotationProcessor "com.github.bumptech.glide:compiler:$versions.glide"
+    kapt "com.github.bumptech.glide:compiler:$versions.glide"
 
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'

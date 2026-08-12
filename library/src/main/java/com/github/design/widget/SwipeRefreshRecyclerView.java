@@ -200,6 +200,14 @@ public class SwipeRefreshRecyclerView extends SwipeRefreshLayout {
         mRecyclerView.removeOnItemTouchListener(listener);
     }
 
+    public RecyclerView.LayoutManager getLayoutManager() {
+        return mRecyclerView.getLayoutManager();
+    }
+
+    public RecyclerView getRecyclerView() {
+        return mRecyclerView;
+    }
+
     private void notifyOnRefresh() {
         for (OnRefreshListener listener : mRefreshListeners) {
             listener.onRefresh(this);

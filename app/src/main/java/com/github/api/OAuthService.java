@@ -14,7 +14,6 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Url;
 
 /**
  * all requests
@@ -30,9 +29,6 @@ public interface OAuthService {
 
     @GET("/user")
     Call<User> getAuthorizedUser(@Header("Authorization") String auth);
-
-    @GET("/user")
-    Call<User> getAuthorizedUser();
 
     @POST("https://github.com/login/oauth/access_token")
     Observable<Result<OAuthResp>> oauth(@Body OAuthReq req);
