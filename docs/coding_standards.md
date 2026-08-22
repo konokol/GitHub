@@ -81,7 +81,7 @@ ghstorage/src/main/kotlin/...        # 存储模块
 ```
 
 ### 包命名约定
-- 使用公司域名反向：`com.github.*`
+- 使用公司域名反向：`com.pancoku.*`
 - 按功能模块组织包结构
 - 保持包结构扁平化
 

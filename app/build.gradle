@@ -111,10 +111,10 @@ dependencies {
     implementation project(":library")
     implementation project(":appmock")
 
-    // storage
-    implementation project(":storage")
-    implementation project(":storage-datastore")
-    implementation project(":storage-mmkv")
+    // vault
+    implementation project(":vault")
+    implementation project(":vault-datastore")
+    implementation project(":vault-mmkv")
     implementation 'com.tencent:mmkv:2.4.1'
 
     implementation "androidx.appcompat:appcompat:$versions.appcompat"

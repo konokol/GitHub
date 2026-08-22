@@ -3,6 +3,6 @@ plugins {
 }
 include ':app', ':library'
 include ':appmock'
-include ':storage'
-include ':storage-datastore'
-include ':storage-mmkv'
+include ':vault'
+include ':vault-datastore'
+include ':vault-mmkv'
