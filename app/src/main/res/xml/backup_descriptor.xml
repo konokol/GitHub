@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <full-backup-content>
     <!-- Exclude specific shared preferences that contain GCM registration Id -->
+
+    <!-- MMKV 的 cryptKey 由 AndroidKeyStore 主密钥包裹，主密钥设备绑定且不参与备份。
+         若把包裹后的密钥或加密数据恢复到新设备将无法解密，因此两者一并排除。 -->
+    <exclude domain="sharedpref" path="storage_mmkv_crypt.xml"/>
+    <exclude domain="file" path="mmkv/"/>
 </full-backup-content>

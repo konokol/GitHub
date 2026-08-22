@@ -77,6 +77,10 @@ android {
         incremental true
     }
 
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
     dependenciesInfo {
         includeInApk false
         includeInBundle false
@@ -94,7 +98,7 @@ configurations.configureEach {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
         def requested = details.requested
         if (requested.group == 'org.jetbrains.kotlin') {
-            details.useVersion '1.8.10'
+            details.useVersion '2.2.10'
         }
     }
 }

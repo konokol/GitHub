@@ -2,10 +2,11 @@ package com.pankoku.ghstorage.mmkv
 
 import android.content.Context
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.pankoku.ghstorage.EncryptionType
 import com.pankoku.ghstorage.KVStorage
 import com.pankoku.ghstorage.KVStorageException
 import com.tencent.mmkv.MMKV
+import com.tencent.mmkv.MMKVConfig
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
@@ -17,9 +18,10 @@ import kotlinx.coroutines.flow.map
  * 支持多种数据类型和加密存储
  */
 class MMKVStorage(
-    private val context: Context,
+    context: Context,
     private val name: String,
-    encryption: com.pankoku.ghstorage.EncryptionType = com.pankoku.ghstorage.EncryptionType.NONE
+    encryption: EncryptionType = EncryptionType.NONE,
+    multiProcess: Boolean = false
 ) : KVStorage {
 
     private val mmkv: MMKV
@@ -27,32 +29,26 @@ class MMKVStorage(
     private val keyChangeFlows = mutableMapOf<String, MutableStateFlow<String?>>()
 
     init {
-        val mode = if (encryption == com.pankoku.ghstorage.EncryptionType.NONE) {
-            MMKV.SINGLE_PROCESS_MODE
-        } else {
-            MMKV.MULTI_PROCESS_MODE
+        val config = MMKVConfig().apply {
+            mode = if (multiProcess) MMKV.MULTI_PROCESS_MODE else MMKV.SINGLE_PROCESS_MODE
+            when (encryption) {
+                EncryptionType.NONE -> Unit
+                EncryptionType.AES_256_CFB -> {
+                    cryptKey = MMKVCryptKeyProvider.getOrCreate(context)
+                    // 不显式置 true 时 MMKV 会把密钥截断到 16 字节，退化为 AES-128
+                    aes256 = true
+                }
+                EncryptionType.CUSTOM -> throw KVStorageException.UnsupportedOperationException(
+                    "EncryptionType.CUSTOM has no key provider hook yet"
+                )
+            }
         }
-        
-        mmkv = MMKV.mmkvWithID(name, mode) ?: MMKV.defaultMMKV()
-        
-        if (encryption != com.pankoku.ghstorage.EncryptionType.NONE) {
-            // MMKV 提供加密支持
-            val cryptKey = generateEncryptionKey(encryption)
-            mmkv.encode("MMKV_CRYPT_KEY", cryptKey)
-        }
-    }
 
-    private fun generateEncryptionKey(encryption: com.pankoku.ghstorage.EncryptionType): String {
-        return when (encryption) {
-            com.pankoku.ghstorage.EncryptionType.AES_256_GCM -> {
-                // 实际项目中应该从安全的地方获取密钥
-                // 这里使用固定密钥作为示例
-                "GHStorage_AES256_Encryption_Key_32bytes!"
-            }
-            com.pankoku.ghstorage.EncryptionType.CUSTOM -> {
-                "GHStorage_Custom_Encryption_Key_32bytes!"
-            }
-            else -> ""
+        mmkv = try {
+            MMKV.mmkvWithID(name, config) ?: throw RuntimeException("mmkvWithID returned null")
+        } catch (e: Exception) {
+            // 不能回退到 defaultMMKV()，那会把本应加密隔离的数据写入共享明文存储
+            throw KVStorageException.StorageException("Failed to open MMKV instance: $name", e)
         }
     }
 

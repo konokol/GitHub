@@ -15,27 +15,26 @@ import com.tencent.mmkv.MMKV
 class MMKVFactory(private val context: Context) : KVStorageFactory {
 
     init {
-        MMKV.initialize(context)
+        initialize(context)
     }
 
-    override fun create(name: String): KVStorage {
-        return MMKVStorage(context, name, EncryptionType.NONE)
-    }
+    override fun create(name: String): KVStorage =
+        MMKVStorage(context, name, EncryptionType.NONE)
 
-    override fun create(name: String, encryption: EncryptionType): KVStorage {
-        return MMKVStorage(context, name, encryption)
-    }
+    override fun create(name: String, encryption: EncryptionType): KVStorage =
+        MMKVStorage(context, name, encryption)
 
     companion object {
+        @Volatile
         private var initialized = false
-        
-        /**
-         * 初始化 MMKV（需要在 Application.onCreate 中调用）
-         */
+
+        /** 初始化 MMKV，幂等。建议在 Application.onCreate 中调用 */
         @JvmStatic
         fun initialize(context: Context) {
-            if (!initialized) {
-                MMKV.initialize(context)
+            if (initialized) return
+            synchronized(this) {
+                if (initialized) return
+                MMKV.initialize(context.applicationContext)
                 initialized = true
             }
         }

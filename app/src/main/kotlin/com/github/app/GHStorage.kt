@@ -86,7 +86,7 @@ class GHStorage @Inject constructor(
      * @return 安全 KVStorage 实例（加密）
      */
     fun getSecureStorage(): KVStorage =
-        getEncryptedStorage("secure", EncryptionType.AES_256_GCM)
+        getEncryptedStorage("secure", EncryptionType.AES_256_CFB)
 
     /**
      * 清空所有缓存的存储实例

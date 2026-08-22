@@ -37,9 +37,9 @@ enum class EncryptionType {
     NONE,
 
     /**
-     * AES-256-GCM 加密
+     * AES-256-CFB，由 MMKV 内置实现
      */
-    AES_256_GCM,
+    AES_256_CFB,
 
     /**
      * 自定义加密
