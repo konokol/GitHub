@@ -1,0 +1,7 @@
+Always read and strictly follow ALL project rules, conventions, and architectural guidelines located in the `.ai/` directory.
+
+The `.ai/` directory is the single source of truth for:
+1. Coding standards (Kotlin-first, No Java).
+2. Storage strategies (GHStorage).
+3. Async patterns (Coroutines).
+4. Any other domain-specific instructions added there.
