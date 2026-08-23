@@ -23,12 +23,11 @@
 - [ ] **[重点]** 分页加载与下拉刷新优化
 - [ ] **[增强]** 复杂事件（如 IssueComment, PullRequestReview）的详细渲染
 
-### C. 仓库浏览 (Repository) | 进度: 25% 🚧
+### C. 仓库浏览 (Repository) | 进度: 10% ⏳
 - [x] 基础数据模型 (Repository.java)
-- [x] 仓库详情页框架建立 (TabLayout + ViewPager2)
-- [ ] 仓库详情页子 Tab 内容填充 (Info, Code, Commits)
+- [ ] **[急需]** 仓库详情页实现 (Info, Code, Commits, Releases)
 - [ ] 我的仓库列表与搜索结果展示
-- **详情**: [Repo 计划与简报](repo/tasks.md)
+- **详情**: [Repo 计划](repo/tasks.md)
 
 ### D. Issue 与 Pull Request | 进度: 5% ⏳
 - [x] 基础数据模型 (Issue.java)

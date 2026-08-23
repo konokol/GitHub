@@ -139,12 +139,6 @@
                 android:value="androidx.startup.async" />
         </provider>
 
-        <!-- repository -->
-        <activity
-            android:name="com.github.app.repo.RepositoryActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
-
     </application>
 
 </manifest>
