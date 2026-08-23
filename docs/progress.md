@@ -10,11 +10,12 @@
 
 ## 2. 核心功能进展
 
-### A. 认证与账户 (Authentication) | 进度: 60% 🚧
+### A. 认证与账户 (Authentication) | 进度: 70% 🚧
 - [x] GitHub OAuth 授权流程实现
 - [x] 登录、登出、闪屏页 (Splash)
-- [ ] **[紧急]** 登录凭证安全接入 Vault (进行中)
-- [ ] **[关键]** 完善登录过期处理与 Token 刷新机制
+- [x] 用户中心 (UserCenter) 存储逻辑升级为 Vault (已交付 Review)
+- [ ] 关键: 完善登录过期处理与 Token 刷新机制
+- **详情**: [Auth 计划与简报](auth/tasks.md)
 
 ### B. 动态与 Feed (Dashboard/Activity) | 进度: 40% 🚧
 - [x] Feed 列表基础框架 (MVP)
@@ -22,10 +23,12 @@
 - [ ] **[重点]** 分页加载与下拉刷新优化
 - [ ] **[增强]** 复杂事件（如 IssueComment, PullRequestReview）的详细渲染
 
-### C. 仓库浏览 (Repository) | 进度: 10% ⏳
+### C. 仓库浏览 (Repository) | 进度: 25% 🚧
 - [x] 基础数据模型 (Repository.java)
-- [ ] **[急需]** 仓库详情页实现 (Info, Code, Commits, Releases)
+- [x] 仓库详情页框架建立 (TabLayout + ViewPager2)
+- [ ] 仓库详情页子 Tab 内容填充 (Info, Code, Commits)
 - [ ] 我的仓库列表与搜索结果展示
+- **详情**: [Repo 计划与简报](repo/tasks.md)
 
 ### D. Issue 与 Pull Request | 进度: 5% ⏳
 - [x] 基础数据模型 (Issue.java)
@@ -44,10 +47,11 @@
 
 ## 3. 基础架构进展
 
-### A. 存储系统 (Vault) | 进度: 95% ✅
+### A. 存储系统 (Vault) | 进度: 100% ✅
 - [x] 统一接口设计与包名规范化 (`com.pancoku.vault`)
 - [x] DataStore 与 MMKV + KeyStore 加密实现
-- [ ] 存储层单元测试补齐 (详见 [测试计划](testing/tasks.md))
+- [x] 稳定性修复 (Manager 与 线程安全容器)
+- **详情**: [Vault 进度](vault/progress.md)
 
 ### B. 通讯与核心 (Core) | 进度: 70% 🚧
 - [x] 网络请求库 (Retrofit/OkHttp) 封装
