@@ -1,50 +1,87 @@
-# GitHub Android 项目总进度表
+# GitHub App 项目总进度表
 
-## 1. 项目概览
-- **当前状态**: 🚧 架构升级中 (Kotlin 迁移 + 存储层 Vault 化)
-- **总体进度**: ~40%
-- **最后更新**: 2026-08-22
-
----
-
-## 2. 核心项目进度
-
-### A. 存储层 (Vault)
-- **状态**: ✅ 基础架构完成
-- **任务进展**:
-    - [x] 技术方案设计 (Vault 漫威主题)
-    - [x] 接口模块 (`vault`) 实现
-    - [x] DataStore 实现与稳定性修复
-    - [x] MMKV 真加密实现
-    - [x] 全局包名重构 (`com.pancoku.vault`)
-- **详细记录**: [Vault 实施细节](storage/progress.md)
-
-### B. 应用核心与 DI
-- **状态**: 🚧 迁移中
-- **任务进展**:
-    - [x] 恢复 Dagger/kapt 编译链路
-    - [x] 接入 GHStorage (Vault) 入口类
-    - [ ] `GitHub` 全局单例 Kotlin 迁移
-    - [ ] DI 组件 (`AppModule`/`AppComponent`) Kotlin 迁移
-
-### C. 用户中心 (UserCenter)
-- **状态**: ⏳ 待开始
-- **任务进展**:
-    - [ ] `UserCenterImpl` Kotlin 迁移
-    - [ ] 接入 `getSecureStorage()` 替代旧方案
-    - [ ] 处理异步加载与保存逻辑
-
-### D. AppMock 模块
-- **状态**: 🚧 进行中
-- **任务进展**:
-    - [x] 基础框架搭建
-    - [ ] 代理拦截逻辑完善
-- **详细计划**: [AppMock 实施细节](appmock/appmock_task_plan.md)
+## 1. 项目总目标
+**完成一个功能完备、测试充分的 GitHub Android 客户端。**
+- 覆盖 GitHub 核心业务流程（登录、Feed 流、仓库浏览、Issue/PR 跟踪、通知等）。
+- 实现 80% 以上的代码测试覆盖率。
+- 确保高性能（基于 Vault 加密存储）和高稳定性。
 
 ---
 
-## 3. 关键里程碑
-- [x] 2026-08-07: 存储层方案设计完成
-- [x] 2026-08-11: 解决 Dagger 编译报错
-- [x] 2026-08-22: 完成 Vault 架构重构与包名规范化
-- [ ] (Next): 用户中心核心逻辑 Kotlin 化与存储升级
+## 2. 核心功能进展
+
+### A. 认证与账户 (Authentication) | 进度: 60% 🚧
+- [x] GitHub OAuth 授权流程实现
+- [x] 登录、登出、闪屏页 (Splash)
+- [ ] 用户中心 (UserCenter) 存储逻辑升级为 Vault (进行中)
+- [ ] 登录过期处理与 Token 刷新机制
+
+### B. 动态与 Feed (Dashboard/Activity) | 进度: 40% 🚧
+- [x] Feed 列表基础框架 (MVP)
+- [x] 支持渲染 Push, Create, Delete 等多种事件类型
+- [ ] 分页加载与下拉刷新优化
+- [ ] 复杂事件（如 IssueComment, PullRequestReview）的详细渲染
+
+### C. 仓库浏览 (Repository) | 进度: 10% ⏳
+- [x] 基础数据模型 (Repository.java)
+- [ ] 仓库详情页实现 (Info, Code, Commits, Releases)
+- [ ] 我的仓库列表
+- [ ] 仓库搜索结果展示
+
+### D. Issue 与 Pull Request | 进度: 5% ⏳
+- [x] 基础数据模型 (Issue.java)
+- [ ] Issue 列表与详情
+- [ ] PR 列表与详情
+- [ ] 评论列表展示与发送回复
+
+### E. 用户/组织资料 (Profile) | 进度: 10% ⏳
+- [x] 侧边栏 Profile 简要信息展示
+- [ ] 个人主页详情 (Overview, Repositories, Starred)
+- [ ] 组织主页实现
+
+### F. 通知中心 (Notification) | 进度: 5% ⏳
+- [x] 导航入口与占位 Fragment
+- [ ] 通知消息列表展示
+- [ ] 通知标记为已读/删除操作
+
+### G. 全局搜索 (Search) | 进度: 0% ⏳
+- [ ] 搜索主页
+- [ ] 仓库、用户、Issue 的分类搜索
+
+### H. 设置与分享 (Settings/Sharing) | 进度: 5% ⏳
+- [x] 基础设置 Fragment 框架
+- [ ] 暗黑模式切换
+- [ ] 应用内分享功能实现
+
+---
+
+## 3. 基础架构进展
+
+### A. 存储系统 (Vault - 漫威主题) | 进度: 90% ✅
+- [x] 统一接口设计与包名规范化 (`com.pancoku.vault`)
+- [x] 基于 DataStore 的通用存储实现
+- [x] 基于 MMKV + AndroidKeyStore 的加密存储实现
+- [x] 全局单例 `GHStorage` 应用层接入
+
+### B. 通讯与核心 (Core) | 进度: 70% 🚧
+- [x] 网络请求库 (Retrofit/OkHttp) 封装
+- [x] 应用异步初始化流水线 (AsyncAppInitializer)
+- [x] 基础日志系统 (Logan)
+- [ ] 架构整体向 Kotlin + MVVM/MVI 演进
+
+---
+
+## 4. 测试进展 (Testing) | 进度: 5% ⏳
+- [x] 测试基础设施搭建
+- [ ] 存储层单元测试
+- [ ] 网络与业务逻辑单元测试
+- [ ] UI 自动化测试
+- [ ] 性能基准测试
+
+---
+
+## 5. 关键里程碑
+- [x] 2026-08-07: 完成 Vault 存储方案设计
+- [x] 2026-08-22: 完成 Vault 架构重构与真加密修复
+- [ ] (Next): 用户中心与登录凭证安全接入 Vault
+- [ ] (Pending): 启动仓库详情页功能开发
