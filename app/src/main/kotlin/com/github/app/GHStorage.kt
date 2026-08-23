@@ -6,6 +6,7 @@ import com.pancoku.vault.KVStorage
 import com.pancoku.vault.KVStorageFactory
 import com.pancoku.vault.datastore.DataStoreFactory
 import com.pancoku.vault.mmkv.MMKVFactory
+import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -19,15 +20,13 @@ class GHStorage @Inject constructor(
     private val context: Context
 ) {
 
-    private val storageCache = HashMap<String, KVStorage>()
+    private val storageCache = ConcurrentHashMap<String, KVStorage>()
 
     fun getStorage(name: String): KVStorage {
-        if (!storageCache.containsKey(name)) {
+        return storageCache.getOrPut(name) {
             val factory: KVStorageFactory = DataStoreFactory(context)
-            val storage = factory.create(name)
-            storageCache[name] = storage
+            factory.create(name)
         }
-        return storageCache[name]!!
     }
 
     fun getDefaultStorage(): KVStorage = getStorage("default")
@@ -35,14 +34,11 @@ class GHStorage @Inject constructor(
     fun getCacheStorage(): KVStorage = getStorage("cache")
 
     fun getEncryptedStorage(name: String, encryption: EncryptionType): KVStorage {
-        val factory: KVStorageFactory = MMKVFactory(context)
         val cacheKey = "${name}_${encryption}"
-
-        if (!storageCache.containsKey(cacheKey)) {
-            val storage = factory.create(name, encryption)
-            storageCache[cacheKey] = storage
+        return storageCache.getOrPut(cacheKey) {
+            val factory: KVStorageFactory = MMKVFactory(context)
+            factory.create(name, encryption)
         }
-        return storageCache[cacheKey]!!
     }
 
     fun getSecureStorage(): KVStorage =
