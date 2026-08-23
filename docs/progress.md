@@ -62,26 +62,25 @@
 - [x] 基于 DataStore 的通用存储实现
 - [x] 基于 MMKV + AndroidKeyStore 的加密存储实现
 - [x] 全局单例 `GHStorage` 应用层接入
+- **详情**: [Vault 进度](vault/progress.md)
 
 ### B. 通讯与核心 (Core) | 进度: 70% 🚧
 - [x] 网络请求库 (Retrofit/OkHttp) 封装
 - [x] 应用异步初始化流水线 (AsyncAppInitializer)
 - [x] 基础日志系统 (Logan)
 - [ ] 架构整体向 Kotlin + MVVM/MVI 演进
+- **详情**: [Core 基础设施计划](core/tasks.md)
 
 ---
 
 ## 4. 测试进展 (Testing) | 进度: 5% ⏳
 - [x] 测试基础设施搭建
-- [ ] 存储层单元测试
-- [ ] 网络与业务逻辑单元测试
-- [ ] UI 自动化测试
-- [ ] 性能基准测试
+- [ ] 详情见: [测试任务清单](testing/tasks.md)
 
 ---
 
 ## 5. 关键里程碑
 - [x] 2026-08-07: 完成 Vault 存储方案设计
 - [x] 2026-08-22: 完成 Vault 架构重构与真加密修复
-- [ ] (Next): 用户中心与登录凭证安全接入 Vault
-- [ ] (Pending): 启动仓库详情页功能开发
+- [ ] (Next): 用户中心与登录凭证安全接入 Vault (详见 [Auth 计划](auth/tasks.md))
+- [ ] (Pending): 启动仓库详情页功能开发 (详见 [Repo 计划](repo/tasks.md))
