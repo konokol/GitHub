@@ -13,9 +13,8 @@
 ### A. 认证与账户 (Authentication) | 进度: 70% 🚧
 - [x] GitHub OAuth 授权流程实现
 - [x] 登录、登出、闪屏页 (Splash)
-- [x] 用户中心 (UserCenter) 存储逻辑升级为 Vault (已交付 Review)
+- [x] 用户中心 (UserCenter) 存储逻辑升级为 Vault
 - [ ] 关键: 完善登录过期处理与 Token 刷新机制
-- **详情**: [Auth 计划与简报](auth/tasks.md)
 
 ### B. 动态与 Feed (Dashboard/Activity) | 进度: 40% 🚧
 - [x] Feed 列表基础框架 (MVP)
@@ -27,7 +26,6 @@
 - [x] 基础数据模型 (Repository.java)
 - [ ] **[急需]** 仓库详情页实现 (Info, Code, Commits, Releases)
 - [ ] 我的仓库列表与搜索结果展示
-- **详情**: [Repo 计划](repo/tasks.md)
 
 ### D. Issue 与 Pull Request | 进度: 5% ⏳
 - [x] 基础数据模型 (Issue.java)
@@ -67,5 +65,5 @@
 
 ## 5. 关键里程碑
 - [x] 2026-08-22: 完成 Vault 架构重构与真加密修复
-- [ ] **(当前任务)**: 补齐用户中心与登录流的 Vault 接入及安全逻辑
+- [ ] **(当前任务)**: 补齐用户中心与登录流的安全逻辑
 - [ ] **(下一步)**: 启动仓库详情页与 Issue/PR 核心功能开发
