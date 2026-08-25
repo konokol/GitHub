@@ -54,6 +54,7 @@ public class NetModule {
     OkHttpClient provideOkHttpClient() {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
         client.callTimeout(mNetConfig.getTimeout(), TimeUnit.MILLISECONDS)
+                .authenticator(new TokenAuthenticator())
                 .addInterceptor(AppMock.instance.newInterceptor(""))
                 .addInterceptor(new AuthorizationInterceptor())
                 .addInterceptor(new HttpLoggingInterceptor(

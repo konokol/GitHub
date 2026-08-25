@@ -4,38 +4,23 @@ import android.content.Context
 import com.github.core.AppComponent
 import com.github.core.AppModule
 import com.github.core.DaggerAppComponent
-import com.github.core.net.NetConfig
 import com.github.core.net.NetModule
 
 /**
- * a Global single Class
+ * Global entry point for accessing Dagger components and application-wide dependencies.
  */
-class GitHub private constructor(application: Context) {
+object GitHub {
+    private lateinit var appComponent: AppComponent
 
-    init {
-        sDaggerAppComponent = DaggerAppComponent.builder()
-            .appModule(AppModule(application))
-            .netModule(NetModule(NetConfig.defaultConfig()))
+    @JvmStatic
+    fun init(context: Context): GitHub {
+        appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(context))
+            .netModule(NetModule())
             .build()
+        return this
     }
 
-    companion object {
-        private var mGitHub: GitHub? = null
-        private lateinit var sDaggerAppComponent: AppComponent
-
-        @JvmStatic
-        fun init(application: Context): GitHub {
-            if (mGitHub == null) {
-                synchronized(GitHub::class.java) {
-                    if (mGitHub == null) {
-                        mGitHub = GitHub(application)
-                    }
-                }
-            }
-            return mGitHub!!
-        }
-
-        @JvmStatic
-        fun appComponent(): AppComponent = sDaggerAppComponent
-    }
+    @JvmStatic
+    fun appComponent(): AppComponent = appComponent
 }

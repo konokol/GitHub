@@ -1,7 +1,9 @@
 package com.pancoku.vault.datastore
 
 import android.content.Context
+import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
+import androidx.datastore.preferences.preferencesDataStore
 import com.google.gson.Gson
 import com.pancoku.vault.KVStorage
 import com.pancoku.vault.KVStorageException
@@ -10,16 +12,16 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 class DataStoreStorage(
-    context: Context,
+    private val context: Context,
     private val name: String
 ) : KVStorage {
 
-    private val dataStore = VaultDataStoreManager.get(context, name)
+    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name)
     private val gson = Gson()
 
     override suspend fun put(key: String, value: Any): Result<Unit> {
         return try {
-            dataStore.edit { preferences ->
+            context.dataStore.edit { preferences ->
                 when (value) {
                     is String -> preferences[stringPreferencesKey(key)] = value
                     is Int -> preferences[intPreferencesKey(key)] = value
@@ -39,7 +41,7 @@ class DataStoreStorage(
     @Suppress("UNCHECKED_CAST")
     override suspend fun <T> get(key: String, clazz: Class<T>): Result<T?> {
         return try {
-            val preferences = dataStore.data.first()
+            val preferences = context.dataStore.data.first()
             val result = when (clazz) {
                 String::class.java -> preferences[stringPreferencesKey(key)]
                 Int::class.java, Int::class.javaPrimitiveType -> preferences[intPreferencesKey(key)]
@@ -61,7 +63,7 @@ class DataStoreStorage(
 
     override suspend fun remove(key: String): Result<Unit> {
         return try {
-            dataStore.edit { preferences ->
+            context.dataStore.edit { preferences ->
                 preferences.remove(stringPreferencesKey(key))
                 preferences.remove(intPreferencesKey(key))
                 preferences.remove(longPreferencesKey(key))
@@ -78,7 +80,7 @@ class DataStoreStorage(
 
     override suspend fun clear(): Result<Unit> {
         return try {
-            dataStore.edit { preferences -> preferences.clear() }
+            context.dataStore.edit { preferences -> preferences.clear() }
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(KVStorageException.StorageException("Failed to clear storage", e))
@@ -87,7 +89,7 @@ class DataStoreStorage(
 
     override suspend fun contains(key: String): Result<Boolean> {
         return try {
-            val preferences = dataStore.data.first()
+            val preferences = context.dataStore.data.first()
             val exists = preferences.contains(stringPreferencesKey(key)) ||
                          preferences.contains(stringPreferencesKey("${key}_json"))
             Result.success(exists)
@@ -98,7 +100,7 @@ class DataStoreStorage(
 
     override suspend fun allKeys(): Result<List<String>> {
         return try {
-            val preferences = dataStore.data.first()
+            val preferences = context.dataStore.data.first()
             val keys = preferences.asMap().keys.map { key ->
                 key.name.removeSuffix("_json")
             }.distinct()
@@ -109,7 +111,7 @@ class DataStoreStorage(
     }
 
     override fun <T> watch(key: String, clazz: Class<T>): Flow<T?> {
-        return dataStore.data.map { preferences ->
+        return context.dataStore.data.map { preferences ->
             try {
                 @Suppress("UNCHECKED_CAST")
                 when (clazz) {

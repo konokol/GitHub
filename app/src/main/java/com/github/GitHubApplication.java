@@ -5,7 +5,7 @@ import android.content.Context;
 
 import com.github.core.LifecycleMonitor;
 import com.github.core.init.AsyncAppInitializer;
-import com.pankoku.ghstorage.mmkv.MMKVFactory;
+import com.pancoku.vault.mmkv.MMKVFactory;
 
 /**
  * Custom Application

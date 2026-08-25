@@ -12,7 +12,7 @@ import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
 
-internal object MMKVCryptKeyProvider {
+object MMKVCryptKeyProvider {
     private const val KEYSTORE_PROVIDER = "AndroidKeyStore"
     private const val MASTER_KEY_ALIAS = "vault_mmkv_master_key"
     private const val TRANSFORMATION = "AES/GCM/NoPadding"

@@ -13,6 +13,7 @@
 3.  **GHStorage 存储**: 严禁直接使用 `SharedPreferences`。必须使用 `GHStorage` 接口进行持久化。
 4.  **异步编程**: 统一使用 Kotlin Coroutines 处理异步任务。
 5.  **进度管理**: 修改进度时必须遵循 `docs/progress.md` 的全景管理规则（关注功能进度而非语言迁移细节）。
+6.  **🚫 严禁主动迁移存量代码**: 除非为了修复 Bug 必须重构，或者用户明确要求，否则**禁止**主动将现有的 Java 代码迁移为 Kotlin。业务功能的补齐和质量保障是当前最高优先级。
 
 ## 3. 详细规约索引
 - [Kotlin & Java 编码规约](conventions/kotlin_java.md)

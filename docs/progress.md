@@ -10,11 +10,12 @@
 
 ## 2. 核心功能进展
 
-### A. 认证与账户 (Authentication) | 进度: 70% 🚧
+### A. 认证与账户 (Authentication) | 进度: 85% ✅
 - [x] GitHub OAuth 授权流程实现
 - [x] 登录、登出、闪屏页 (Splash)
-- [x] 用户中心 (UserCenter) 存储逻辑升级为 Vault
-- [ ] 关键: 完善登录过期处理与 Token 刷新机制
+- [x] 登录凭证安全接入 Vault (ACCOUNT-001) - [详情](account/reports/vault_integration_walkthrough.md)
+- [x] 完善登录过期处理与 401 自动登出机制
+- [ ] **[下一步]** 完善 Token 刷新机制 (如果 GitHub API 需要)
 
 ### B. 动态与 Feed (Dashboard/Activity) | 进度: 40% 🚧
 - [x] Feed 列表基础框架 (MVP)
@@ -44,11 +45,10 @@
 
 ## 3. 基础架构进展
 
-### A. 存储系统 (Vault) | 进度: 100% ✅
+### A. 存储系统 (Vault) | 进度: 95% ✅
 - [x] 统一接口设计与包名规范化 (`com.pancoku.vault`)
 - [x] DataStore 与 MMKV + KeyStore 加密实现
-- [x] 稳定性修复 (Manager 与 线程安全容器)
-- **详情**: [Vault 进度](vault/progress.md)
+- [ ] 存储层单元测试补齐 (详见 [测试计划](testing/tasks.md))
 
 ### B. 通讯与核心 (Core) | 进度: 70% 🚧
 - [x] 网络请求库 (Retrofit/OkHttp) 封装
@@ -65,5 +65,5 @@
 
 ## 5. 关键里程碑
 - [x] 2026-08-22: 完成 Vault 架构重构与真加密修复
-- [ ] **(当前任务)**: 补齐用户中心与登录流的安全逻辑
-- [ ] **(下一步)**: 启动仓库详情页与 Issue/PR 核心功能开发
+- [x] 2026-08-25: 完成用户中心 Vault 接入与 401 安全逻辑 (ACCOUNT-001)
+- [ ] **(当前任务)**: 启动仓库详情页核心功能开发 (REPOSITORY-001)

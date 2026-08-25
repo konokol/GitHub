@@ -2,43 +2,40 @@ package com.github.core
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.res.Resources
+import android.preference.PreferenceManager
 import com.github.account.IUserCenter
 import com.github.account.UserCenterImpl
 import com.github.app.GHStorage
-import com.github.utils.SecureSharedPreference
+import com.pancoku.vault.mmkv.MMKVCryptKeyProvider
+import com.tencent.mmkv.MMKV
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule(context: Context) {
-
-    private val mContext: Context = context.applicationContext
+class AppModule(private val context: Context) {
 
     @Provides
     @Singleton
-    fun provideContext(): Context = mContext
-
-    @Provides
-    @Singleton
-    fun providePreference(): SharedPreferences = 
-        mContext.getSharedPreferences("settings", Context.MODE_PRIVATE)
-
-    @Provides
-    @Singleton
-    fun provideResources(): Resources = mContext.resources
-
-    @Provides
-    @Singleton
-    fun provideSecureSharedPreference(): SecureSharedPreference =
-        SecureSharedPreference(mContext, "app_settings", Context.MODE_PRIVATE)
-
-    @Provides
-    @Singleton
-    fun provideUserCenter(): IUserCenter = UserCenterImpl.getInstance()
+    fun provideContext(): Context = context
 
     @Provides
     @Singleton
     fun provideGHStorage(context: Context): GHStorage = GHStorage(context)
+
+    @Provides
+    @Singleton
+    fun provideUserCenter(impl: UserCenterImpl): IUserCenter = impl
+
+    @Provides
+    @Singleton
+    fun providePreference(context: Context): SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(context)
+
+    @Provides
+    @Singleton
+    fun provideSecureSharedPreference(context: Context): SharedPreferences {
+        val cryptKey = MMKVCryptKeyProvider.getOrCreate(context)
+        return MMKV.mmkvWithID("secure", MMKV.SINGLE_PROCESS_MODE, cryptKey)
+    }
 }

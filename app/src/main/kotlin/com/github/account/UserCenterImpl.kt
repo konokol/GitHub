@@ -5,7 +5,9 @@ import com.github.GitHub
 import com.github.account.model.User
 import com.github.app.GHStorage
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
 import java.util.concurrent.CopyOnWriteArraySet
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -14,10 +16,11 @@ import javax.inject.Singleton
  * UserCenter implementation using Vault (via GHStorage)
  */
 @Singleton
-class UserCenterImpl @Inject constructor() : IUserCenter {
+class UserCenterImpl @Inject constructor(
+    private val ghStorage: GHStorage
+) : IUserCenter {
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
-    private val ghStorage: GHStorage by lazy { GitHub.appComponent().ghStorage() }
     private val storage by lazy { ghStorage.getSecureStorage() }
 
     private var mUser: User? = null
@@ -29,7 +32,7 @@ class UserCenterImpl @Inject constructor() : IUserCenter {
         scope.launch {
             loadUserInternal()
             
-            // Watch for external changes (optional, but keep parity with old listener logic)
+            // Watch for external changes
             storage.watch(USER_DETAIL, User::class.java).collectLatest { user ->
                 if (user == null && mUser != null) {
                     mUser = null
@@ -51,7 +54,10 @@ class UserCenterImpl @Inject constructor() : IUserCenter {
         listener?.let { mStatusChangedListeners.remove(it) }
     }
 
-    override fun isLogin(): Boolean = mUser != null && !TextUtils.isEmpty(mAuthorization)
+    override fun isLogin(): Boolean = mUser != null && !mAuthorization.isNullOrEmpty()
+
+    override fun isLoginFlow(): Flow<Boolean> = storage.watch(USER_DETAIL, User::class.java)
+        .map { it != null }
 
     override fun getUser(): User? = mUser
 
@@ -95,6 +101,15 @@ class UserCenterImpl @Inject constructor() : IUserCenter {
         }
     }
 
+    /**
+     * Called by UserCenterInit to load user data on startup.
+     */
+    fun loadUser() {
+        scope.launch {
+            loadUserInternal()
+        }
+    }
+
     private suspend fun loadUserInternal() {
         val userResult = storage.get(USER_DETAIL, User::class.java)
         mUser = userResult.getOrNull()
@@ -108,7 +123,7 @@ class UserCenterImpl @Inject constructor() : IUserCenter {
     }
 
     private fun notifyLogout() {
-        mStatusChangedListeners.forEach { it.onStatusChanged(null, IUserCenter.STSTUS_LOGOUT) }
+        mStatusChangedListeners.forEach { it.onStatusChanged(null, IUserCenter.STATUS_LOGOUT) }
     }
 
     companion object {
@@ -117,6 +132,7 @@ class UserCenterImpl @Inject constructor() : IUserCenter {
 
         @JvmStatic
         fun getInstance(): UserCenterImpl {
+            // For legacy Java access
             return GitHub.appComponent().userCenter() as UserCenterImpl
         }
     }
