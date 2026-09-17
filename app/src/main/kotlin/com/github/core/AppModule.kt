@@ -2,12 +2,10 @@ package com.github.core
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
 import com.github.account.IUserCenter
 import com.github.account.UserCenterImpl
 import com.github.app.GHStorage
-import com.pancoku.vault.mmkv.MMKVCryptKeyProvider
-import com.tencent.mmkv.MMKV
+import com.github.utils.SecureSharedPreference
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -29,13 +27,11 @@ class AppModule(private val context: Context) {
 
     @Provides
     @Singleton
-    fun providePreference(context: Context): SharedPreferences =
-        PreferenceManager.getDefaultSharedPreferences(context)
+    fun providePreference(): SharedPreferences =
+        context.getSharedPreferences("settings", Context.MODE_PRIVATE);
 
     @Provides
     @Singleton
-    fun provideSecureSharedPreference(context: Context): SharedPreferences {
-        val cryptKey = MMKVCryptKeyProvider.getOrCreate(context)
-        return MMKV.mmkvWithID("secure", MMKV.SINGLE_PROCESS_MODE, cryptKey)
-    }
+    fun provideSecureSharedPreference(): SecureSharedPreference =
+        SecureSharedPreference(context, "app_settings", Context.MODE_PRIVATE)
 }
