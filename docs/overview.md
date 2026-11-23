@@ -28,11 +28,11 @@ graph TD
         B_ACCOUNT["认证与用户中心 (account) [85% ✅]"]
         B_WEB["Web 通用容器与页面 (web - BifrostWebView/WebActivity) [60% 🚧]"]
         B_DESIGN["通用 UI 组件库 (design_library - :library) [90% ✅]"]
-        B_MOCK["Mock 测试与代理服务 (appmock - :appmock) [80% ✅]"]
     end
 
     subgraph L3["3. 基础服务层 (Base Service Layer)"]
         S_VAULT["Vault 加密存储系统 (vault - :vault, :vault-datastore, :vault-mmkv) [95% ✅]"]
+        S_MOCK["Mock 测试与代理服务 (appmock - :appmock) [80% ✅]"]
         S_NET["网络请求与 API 服务 (network - Retrofit/OkHttp) [70% 🚧]"]
         S_STARTUP["应用启动流水线 (startup - AppStartup) [85% ✅]"]
         S_DI["依赖注入服务 (di - Dagger 2) [75% 🚧]"]
@@ -62,7 +62,6 @@ graph TD
 - **`account`（认证与用户中心）**：OAuth 2.0 登录流程、Token 鉴权管理、安全注销、401 自动登出与全应用登录状态维护。
 - **`web`（Web 通用容器与页面）**：`BifrostWebView` 核心 Web 控件与 `WebActivity` 通用页面容器，用于展示网页链接、H5 分享与 Web 交互。
 - **`design_library`（通用 UI 组件库 - `:library`）**：通用自定义 View（如 `SwipeRefreshRecyclerView`、`EmptyView`、`LoadingView`）、UI 设计规范、Logger 框架。
-- **`appmock`（Mock 测试与代理服务 - `:appmock`）**：Mock API 数据引擎与代理拦截支持，辅助本地调试与集成测试。
 
 ### 层级 3：基础服务层 (`docs/service_base/`)
 纯技术基础设施与平台服务，不包含任何具体业务逻辑，对上层提供技术支撑：
@@ -70,6 +69,7 @@ graph TD
   - `vault`：提供统一接口 `KVStorage` 与应用入口 `GHStorage`。
   - `vault-datastore`：Preferences DataStore 响应式存储引擎。
   - `vault-mmkv`：结合 Android KeyStore (AES-256-CFB) 的硬件加密 MMKV 引擎。
+- **`appmock`（Mock 测试与代理服务 - `:appmock`）**：Mock API 数据引擎与代理拦截支持，辅助本地调试与集成测试。
 - **`network`（网络请求与 API 服务）**：基于 Retrofit 2 + OkHttp 3 + RxJava 3/Coroutines 封装 GitHub REST API v3 客户端及全局拦截器 (`TokenAuthenticator`)。
 - **`startup`（应用启动流水线）**：基于 `androidx.startup` 的模块化异步初始化机制。
 - **`di`（依赖注入服务）**：基于 Dagger 2 的 Component 与 Module 全局依赖注入体系。
@@ -96,10 +96,10 @@ docs/
 ├── business_base/                          # 2. 基础业务层 (Foundational Business Layer)
 │   ├── account/                            # 认证与用户中心 (ACCOUNT-001)
 │   ├── web/                                # Web 通用容器与页面 (`BifrostWebView` / `WebActivity`)
-│   ├── design_library/                     # 通用 UI 组件库 (:library)
-│   └── appmock/                            # Mock 测试与代理服务 (:appmock)
+│   └── design_library/                     # 通用 UI 组件库 (:library)
 └── service_base/                           # 3. 基础服务层 (Base Service Layer)
     ├── vault/                              # Vault 加密存储系统
+    ├── appmock/                            # Mock 测试与代理服务 (:appmock)
     ├── network/                            # 网络请求与 API 服务
     ├── startup/                            # 应用启动流水线
     ├── di/                                 # 依赖注入服务

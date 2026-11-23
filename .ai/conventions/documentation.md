@@ -16,18 +16,18 @@ docs/
 ├── coding_standards.md          # 代码规范与指南
 ├── agent_knowledge_base.md      # Agent 知识库
 ├── business/                    # 【1. 业务层 (Business / Feature Layer)】
-│   ├── repository/              # 原子模块：仓库浏览与源码 (REPOSITORY-001 当前重点)
-│   ├── feed/                    # 原子模块：动态与 Activity Feed
+│   ├── feed/                    # 原子模块：动态与 Activity Feed (FEED-001 当前重点)
+│   ├── repository/              # 原子模块：仓库浏览与源码查看
 │   ├── issue_pr/                # 原子模块：Issue 与 PR 管理
 │   ├── notification/            # 原子模块：通知中心
 │   └── profile/                 # 原子模块：个人与组织主页
 ├── business_base/               # 【2. 基础业务层 (Foundational Business Layer)】
 │   ├── account/                 # 原子模块：认证与用户中心 (ACCOUNT-001)
 │   ├── web/                     # 原子模块：Web 通用容器与页面 (`BifrostWebView` / `WebActivity`)
-│   ├── design_library/          # 原子模块：通用 UI 组件库 (:library)
-│   └── appmock/                 # 原子模块：Mock 测试与代理服务 (:appmock)
+│   └── design_library/          # 原子模块：通用 UI 组件库 (:library)
 └── service_base/                # 【3. 基础服务层 (Base Service Layer)】
     ├── vault/                   # 原子模块：Vault 加密存储系统 (:vault, :vault-datastore, :vault-mmkv)
+    ├── appmock/                 # 原子模块：Mock 测试与代理服务 (:appmock)
     ├── network/                 # 原子模块：网络请求与 API 服务 (Retrofit / OkHttp)
     ├── startup/                 # 原子模块：应用启动流水线 (AppStartup)
     ├── di/                      # 原子模块：依赖注入服务 (Dagger 2)

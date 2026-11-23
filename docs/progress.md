@@ -21,10 +21,10 @@
 ├── 2. 基础业务层 (Foundational Business Layer)
 │   ├── account (认证与用户中心)          [85% ✅] (ACCOUNT-001)
 │   ├── web (Web 通用容器与页面)          [60% 🚧]
-│   ├── design_library (UI 组件库 :library) [90% ✅]
-│   └── appmock (Mock 服务 :appmock)     [80% ✅]
+│   └── design_library (UI 组件库 :library) [90% ✅]
 └── 3. 基础服务层 (Base Service Layer)
     ├── vault (Vault 加密存储系统)       [95% ✅]
+    ├── appmock (Mock 服务 :appmock)     [80% ✅]
     ├── network (网络 API 服务)          [70% 🚧]
     ├── startup (应用启动流水线)         [85% ✅]
     ├── di (依赖注入服务 Dagger)         [75% 🚧]
@@ -82,11 +82,6 @@
 - [x] 状态布局 (`EmptyView`, `LoadingView`) 与 Indicator
 - [x] Logger 全局日志框架
 
-#### 2.4 Mock 测试与代理服务 (`appmock` - `:appmock`) | 进度: 80% ✅
-- [x] Mock 数据引擎设计与任务规划就位
-- [x] 改进计划与技术方案设计 - [详情](business_base/appmock/appmock_technical_design.md)
-- [ ] 自动化测试打桩套件扩充
-
 ---
 
 ### 层级 3：基础服务层 (`docs/service_base/`)
@@ -97,19 +92,24 @@
 - [x] 应用层入口 `GHStorage`
 - [ ] 存储层自动化单元测试补齐 - [详情](service_base/vault/progress.md)
 
-#### 3.2 网络 API 服务 (`network`) | 进度: 70% 🚧
+#### 3.2 Mock 测试与代理服务 (`appmock` - `:appmock`) | 进度: 80% ✅
+- [x] Mock 数据引擎设计与任务规划就位
+- [x] 改进计划与技术方案设计 - [详情](service_base/appmock/appmock_technical_design.md)
+- [ ] 自动化测试打桩套件扩充
+
+#### 3.3 网络 API 服务 (`network`) | 进度: 70% 🚧
 - [x] Retrofit 2 + RxJava 3 + OkHttp 3 基础封装
 - [x] `TokenAuthenticator` 全局 Token 过期拦截
 - [ ] 全量迁移至 Coroutines / Flow 范式
 
-#### 3.3 应用启动流水线 (`startup`) | 进度: 85% ✅
+#### 3.4 应用启动流水线 (`startup`) | 进度: 85% ✅
 - [x] 基于 `androidx.startup` 接入模块化异步初始化
 
-#### 3.4 依赖注入服务 (`di`) | 进度: 75% 🚧
+#### 3.5 依赖注入服务 (`di`) | 进度: 75% 🚧
 - [x] Dagger 2 基础注入 (`AppComponent`, `AppModule`, `GitHub`)
 - [ ] 逐步升级向 Hilt / KSP 依赖注入框架演进
 
-#### 3.5 测试与质量基础设施 (`testing`) | 进度: 5% ⏳
+#### 3.6 测试与质量基础设施 (`testing`) | 进度: 5% ⏳
 - [x] Robolectric + JUnit4 测试基础设施搭建
 - [ ] **[同步进行]** 核心业务逻辑与存储层单元测试补齐（目标 80%+ 覆盖率）
 
